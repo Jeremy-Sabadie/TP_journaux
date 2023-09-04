@@ -6,5 +6,10 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
+        private void TLPmain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
