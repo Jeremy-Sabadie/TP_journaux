@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TLPmain = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewdatas = new System.Windows.Forms.DataGridView();
             this.FLPbuttons = new System.Windows.Forms.FlowLayoutPanel();
@@ -40,13 +41,16 @@
             this.LBtitle = new System.Windows.Forms.Label();
             this.LBbody = new System.Windows.Forms.Label();
             this.LBautor = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TXTtitle = new System.Windows.Forms.TextBox();
+            this.TXTcontent = new System.Windows.Forms.TextBox();
+            this.TXTautor = new System.Windows.Forms.TextBox();
+            this.BsArticle = new System.Windows.Forms.BindingSource(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.TLPmain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewdatas)).BeginInit();
             this.FLPbuttons.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BsArticle)).BeginInit();
             this.SuspendLayout();
             // 
             // TLPmain
@@ -73,7 +77,7 @@
             this.dataGridViewdatas.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewdatas.Name = "dataGridViewdatas";
             this.dataGridViewdatas.RowTemplate.Height = 25;
-            this.dataGridViewdatas.Size = new System.Drawing.Size(794, 143);
+            this.dataGridViewdatas.Size = new System.Drawing.Size(794, 144);
             this.dataGridViewdatas.TabIndex = 0;
             // 
             // FLPbuttons
@@ -84,9 +88,9 @@
             this.FLPbuttons.Controls.Add(this.BTNdelete);
             this.FLPbuttons.Controls.Add(this.BTNshowNews);
             this.FLPbuttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FLPbuttons.Location = new System.Drawing.Point(3, 301);
+            this.FLPbuttons.Location = new System.Drawing.Point(3, 303);
             this.FLPbuttons.Name = "FLPbuttons";
-            this.FLPbuttons.Size = new System.Drawing.Size(794, 146);
+            this.FLPbuttons.Size = new System.Drawing.Size(794, 144);
             this.FLPbuttons.TabIndex = 1;
             // 
             // BTNcreate
@@ -106,6 +110,7 @@
             this.BTNread.TabIndex = 1;
             this.BTNread.Text = "Read";
             this.BTNread.UseVisualStyleBackColor = true;
+            this.BTNread.Click += new System.EventHandler(this.BTNread_Click);
             // 
             // BTNupdate
             // 
@@ -133,6 +138,7 @@
             this.BTNshowNews.TabIndex = 4;
             this.BTNshowNews.Text = "Voir les journaux";
             this.BTNshowNews.UseVisualStyleBackColor = true;
+            this.BTNshowNews.Click += new System.EventHandler(this.BTNshowNews_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -142,10 +148,10 @@
             this.tableLayoutPanel1.Controls.Add(this.LBtitle, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.LBbody, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.LBautor, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 152);
+            this.tableLayoutPanel1.Controls.Add(this.TXTtitle, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TXTcontent, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.TXTautor, 1, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 153);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -189,29 +195,30 @@
             this.LBautor.Text = "auteur";
             this.LBautor.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox1
+            // TXTtitle
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(64, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(695, 23);
-            this.textBox1.TabIndex = 3;
+            this.TXTtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TXTtitle.Location = new System.Drawing.Point(64, 12);
+            this.TXTtitle.Name = "TXTtitle";
+            this.TXTtitle.Size = new System.Drawing.Size(695, 23);
+            this.TXTtitle.TabIndex = 3;
+            this.TXTtitle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // TXTcontent
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(64, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(695, 23);
-            this.textBox2.TabIndex = 4;
+            this.TXTcontent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TXTcontent.Location = new System.Drawing.Point(64, 59);
+            this.TXTcontent.Name = "TXTcontent";
+            this.TXTcontent.Size = new System.Drawing.Size(695, 23);
+            this.TXTcontent.TabIndex = 4;
             // 
-            // textBox3
+            // TXTautor
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(64, 99);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(695, 23);
-            this.textBox3.TabIndex = 5;
+            this.TXTautor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TXTautor.Location = new System.Drawing.Point(64, 99);
+            this.TXTautor.Name = "TXTautor";
+            this.TXTautor.Size = new System.Drawing.Size(695, 23);
+            this.TXTautor.TabIndex = 5;
             // 
             // Form1
             // 
@@ -226,6 +233,7 @@
             this.FLPbuttons.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BsArticle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,8 +252,10 @@
         private Label LBtitle;
         private Label LBbody;
         private Label LBautor;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox TXTtitle;
+        private TextBox TXTcontent;
+        private TextBox TXTautor;
+        private BindingSource BsArticle;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

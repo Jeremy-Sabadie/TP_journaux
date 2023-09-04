@@ -36,3 +36,4 @@ C:\Users\cda07saba\Desktop\TP_journaux\WinFormsApp1\WinFormsApp1\obj\Debug\net6.
 C:\Users\cda07saba\Desktop\TP_journaux\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.pdb
 C:\Users\cda07saba\Desktop\TP_journaux\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.genruntimeconfig.cache
 C:\Users\cda07saba\Desktop\TP_journaux\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows\ref\WinFormsApp1.dll
+C:\Users\cda07saba\Desktop\TP_journaux\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.journaux.resources

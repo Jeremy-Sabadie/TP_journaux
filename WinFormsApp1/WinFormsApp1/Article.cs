@@ -2,9 +2,9 @@
 {
     internal class Article
     {
-        private int IDAricle { get; set; }
-        private string Titre { get; set; }
-        private string Corps { get; set; }
-        private string Auteur { get; set; }
+        public int IDAricle { get; set; }
+        public string Titre { get; set; }
+        public string Corps { get; set; }
+        public string Auteur { get; set; }
     }
 }

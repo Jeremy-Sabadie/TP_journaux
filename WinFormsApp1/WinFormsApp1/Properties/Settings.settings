@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="stringConnectionnection" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Server=lab005.2isa.org;Port=33005;Database=dbWinForm;UID=root;PWD=1365lab005</Value>
+      <Value Profile="(Default)">Server=lab005.2isa.org;Port=33005;Database=Edito;UID=root;PWD=1365lab005</Value>
     </Setting>
   </Settings>
 </SettingsFile>

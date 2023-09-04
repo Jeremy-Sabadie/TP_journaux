@@ -25,7 +25,7 @@ namespace WinFormsApp1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=lab005.2isa.org;Port=33005;Database=dbWinForm;UID=root;PWD=1365lab005")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=lab005.2isa.org;Port=33005;Database=Edito;UID=root;PWD=1365lab005")]
         public string stringConnectionnection {
             get {
                 return ((string)(this["stringConnectionnection"]));
