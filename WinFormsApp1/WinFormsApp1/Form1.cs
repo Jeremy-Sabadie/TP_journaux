@@ -42,25 +42,28 @@ namespace WinFormsApp1
 
         private void BTNshowNews_Click(object sender, EventArgs e)
         {
-            // Récupérer la fenêtre "MyForm"
-            Form form2 = new MyForm();
-
-            // Affichez la fenêtre
-            form2.Show();
-
-            var newspapers = _dbRequest.GetAllNewspapers();
-            _lstNewspaper.Clear();
-            foreach (Newspapers newspaper in newspapers)
+            using (Form Journaux = new Form())
             {
-                _lstNewspaper.Add(newspaper);
+                Journaux.Text = "journeaux";
+                DialogResult res = Journaux.ShowDialog();
+
+
+
+
+                var newspapers = _dbRequest.GetAllNewspapers();
+                _lstNewspaper.Clear();
+                foreach (Newspapers newspaper in newspapers)
+                {
+                    _lstNewspaper.Add(newspaper);
+                }
+
             }
-
         }
+
+        //private void TLPmain_Paint(object sender, PaintEventArgs e)
+        //    {
+
+        //    }
     }
-
-    //private void TLPmain_Paint(object sender, PaintEventArgs e)
-    //    {
-
-    //    }
 }
 
