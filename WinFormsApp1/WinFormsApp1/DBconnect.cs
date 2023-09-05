@@ -42,10 +42,13 @@ namespace WinFormsApp1
             try
             {
                 RequestConnect.Open();
+                //var transaction = RequestConnect.BeginTransaction();
+                //var compositionQuery = "\"INSERT INTO composition (IDArticle) VALUES (lastinsertid);";
+                var articleQuery = "INSERT ignore INTO article (Titre,Corps,Auteur) VALUES (@titre, @corps, @auteur); SELECT LAST_INSERT_ID()";
 
-
-                var Request = "INSERT ignore INTO article (Titre,Corps,Auteur) VALUES (@titre, @corps, @auteur); SELECT LAST_INSERT_ID()";
-                var result = RequestConnect.Query<int>(Request, new { titre, corps, auteur });
+                var result = RequestConnect.Query<int>(articleQuery, new { GetInsertId = true, titre, corps, auteur, });
+                //var compositionInsert = RequestConnect.Query<int>(compositionQuery, new { id });
+                //transaction.Commit();
                 if (result.Single() > 0)
                 {
                     MessageBox.Show($"l'article de: {auteur} intitulé: {titre} à bien été enregistré.");
