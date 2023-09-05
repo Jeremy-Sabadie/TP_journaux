@@ -75,6 +75,29 @@ namespace WinFormsApp1
             {
                 RequestConnect.Close();
             }
+        }
+        public int UpdateArticle(int id, string old_titre, string old_corps, string old_auteur, string new_titre, string new_corps, string new_auteur)
+        {
+            try
+            {
+                RequestConnect.Open();
+                string query = "UPDATE article SET Titre = @new_titre, Corps=@new_corps, Auteur=@new_auteur WHERE  Titre = @old_titre AND Corps=@old_corps;";
+                var updated = RequestConnect.Execute(query, new { id, old_titre, old_corps, old_auteur, new_titre, new_corps, new_auteur });
+                if (updated > 0)
+                {
+                    MessageBox.Show($"article: {old_titre} de:{old_auteur} à bien été mis à jour.");
+                }
+                else
+                {
+                    MessageBox.Show($"la mise à jour de l'article: {old_titre} de:{old_auteur} n'a pas réussie.");
+                }
+                return updated;
+            }
+            finally
+            {
+                RequestConnect.Close();
+            }
+
 
         }
     }

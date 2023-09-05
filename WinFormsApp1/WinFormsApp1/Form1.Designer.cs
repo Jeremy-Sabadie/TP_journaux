@@ -125,6 +125,7 @@
             this.BTNupdate.TabIndex = 2;
             this.BTNupdate.Text = "Update";
             this.BTNupdate.UseVisualStyleBackColor = true;
+            this.BTNupdate.Click += new System.EventHandler(this.BTNupdate_Click);
             // 
             // BTNdelete
             // 

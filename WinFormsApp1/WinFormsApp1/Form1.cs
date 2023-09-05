@@ -85,6 +85,17 @@ namespace WinFormsApp1
                 //    }
             }
         }
+
+        private void BTNupdate_Click(object sender, EventArgs e)
+        {
+            var current = BsArticle.Current as Article;
+
+
+            if (current is not null)
+            {
+                _dbRequest.UpdateArticle(current.IDArticle, current.Titre, current.Corps, current.Auteur, TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
+            }
+        }
     }
 }
 
