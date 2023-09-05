@@ -65,6 +65,16 @@ namespace WinFormsApp1
             _dbRequest.InsertArticle(TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
         }
 
+        private void BTNdelete_Click(object sender, EventArgs e)
+        {
+            var selected = BsArticle.Current as Article;
+            if (selected is not null)
+            {
+                _dbRequest.DeleteArticle(selected.IDAricle);
+            }
+            BTNread.PerformClick();
+        }
+
         //private void TLPmain_Paint(object sender, PaintEventArgs e)
         //    {
 

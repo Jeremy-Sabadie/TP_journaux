@@ -60,6 +60,19 @@ namespace WinFormsApp1
             }
             finally { RequestConnect.Close(); }
         }
+        public int DeleteArticle(int id)
+        {
+            try
+            {
+                RequestConnect.Open();
+                string Query = "DELETE FROM article where @id= IDArticle;";
+                var res = RequestConnect.Execute(Query, new { id });
+
+                return res;
+            }
+
+            finally { RequestConnect.Close(); }
+        }
 
     }
 }

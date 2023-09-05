@@ -64,9 +64,9 @@
             this.TLPmain.Location = new System.Drawing.Point(0, 0);
             this.TLPmain.Name = "TLPmain";
             this.TLPmain.RowCount = 3;
-            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.11111F));
+            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.66667F));
+            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.22222F));
             this.TLPmain.Size = new System.Drawing.Size(800, 450);
             this.TLPmain.TabIndex = 0;
             // 
@@ -77,7 +77,7 @@
             this.dataGridViewdatas.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewdatas.Name = "dataGridViewdatas";
             this.dataGridViewdatas.RowTemplate.Height = 25;
-            this.dataGridViewdatas.Size = new System.Drawing.Size(794, 144);
+            this.dataGridViewdatas.Size = new System.Drawing.Size(794, 206);
             this.dataGridViewdatas.TabIndex = 0;
             // 
             // FLPbuttons
@@ -88,9 +88,9 @@
             this.FLPbuttons.Controls.Add(this.BTNdelete);
             this.FLPbuttons.Controls.Add(this.BTNshowNews);
             this.FLPbuttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FLPbuttons.Location = new System.Drawing.Point(3, 303);
+            this.FLPbuttons.Location = new System.Drawing.Point(3, 362);
             this.FLPbuttons.Name = "FLPbuttons";
-            this.FLPbuttons.Size = new System.Drawing.Size(794, 144);
+            this.FLPbuttons.Size = new System.Drawing.Size(794, 85);
             this.FLPbuttons.TabIndex = 1;
             // 
             // BTNcreate
@@ -130,6 +130,7 @@
             this.BTNdelete.TabIndex = 3;
             this.BTNdelete.Text = "Delete";
             this.BTNdelete.UseVisualStyleBackColor = true;
+            this.BTNdelete.Click += new System.EventHandler(this.BTNdelete_Click);
             // 
             // BTNshowNews
             // 
@@ -152,7 +153,7 @@
             this.tableLayoutPanel1.Controls.Add(this.TXTtitle, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.TXTcontent, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.TXTautor, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 153);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 215);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
