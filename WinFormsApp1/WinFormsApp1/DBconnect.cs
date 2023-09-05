@@ -66,10 +66,18 @@ namespace WinFormsApp1
             {
                 RequestConnect.Open();
 
-                string query = "DELETE FROM  article WHERE IDArticle = @id;";
+                string delete_article_query = "DELETE FROM article WHERE IDArticle = @id";
 
-                var deletedRow = RequestConnect.Execute(query, new { id });
-                return deletedRow;
+
+                string delete_composition_query = "DELETE FROM composition WHERE IDArticle = @id";
+                // Start a transaction
+                var transaction = RequestConnect.BeginTransaction();
+                var compositionDeletedRow = RequestConnect.Execute(delete_composition_query, new { id });
+
+                var articleDeletedRow = RequestConnect.Execute(delete_article_query, new { id });
+                // Commit the transaction
+                transaction.Commit();
+                return articleDeletedRow;
             }
             finally
             {
@@ -85,7 +93,7 @@ namespace WinFormsApp1
                 var updated = RequestConnect.Execute(query, new { id, old_titre, old_corps, old_auteur, new_titre, new_corps, new_auteur });
                 if (updated > 0)
                 {
-                    MessageBox.Show($"article: {old_titre} de:{old_auteur} à bien été mis à jour.");
+                    MessageBox.Show($"article: {old_titre} de:{old_auteur} à bien été mis à jour avec comme titre: {new_titre} et auteur: {new_auteur}.");
                 }
                 else
                 {

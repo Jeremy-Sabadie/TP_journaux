@@ -94,6 +94,7 @@ namespace WinFormsApp1
             if (current is not null)
             {
                 _dbRequest.UpdateArticle(current.IDArticle, current.Titre, current.Corps, current.Auteur, TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
+                BTNread.PerformClick();
             }
         }
     }
