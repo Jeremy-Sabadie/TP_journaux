@@ -37,5 +37,30 @@ namespace WinFormsApp1
                 RequestConnect.Close();
             }
         }
+        public int InsertArticle(string titre, string corps, string auteur)
+        {
+            try
+            {
+                RequestConnect.Open();
+
+
+                var Request = "INSERT ignore INTO article (Titre,Corps,Auteur) VALUES (@titre, @corps, @auteur); SELECT LAST_INSERT_ID()";
+                var result = RequestConnect.Query<int>(Request, new { titre, corps, auteur });
+                if (result.Single() > 0)
+                {
+                    MessageBox.Show($"l'article de: {auteur} intitulé: {titre} à bien été enregistré.");
+
+                    return result.Single();
+                }
+                else
+                {
+                    MessageBox.Show($"l'article de: {auteur} intitulé: {titre} n'à pas été enregistré.");
+                    return result.Single();
+                }
+            }
+            finally { RequestConnect.Close(); }
+        }
+
     }
 }
+

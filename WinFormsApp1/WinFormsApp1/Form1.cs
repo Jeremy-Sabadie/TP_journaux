@@ -60,6 +60,11 @@ namespace WinFormsApp1
             }
         }
 
+        private void BTNcreate_Click(object sender, EventArgs e)
+        {
+            _dbRequest.InsertArticle(TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
+        }
+
         //private void TLPmain_Paint(object sender, PaintEventArgs e)
         //    {
 

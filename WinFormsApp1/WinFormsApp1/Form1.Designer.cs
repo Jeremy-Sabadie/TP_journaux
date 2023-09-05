@@ -101,6 +101,7 @@
             this.BTNcreate.TabIndex = 0;
             this.BTNcreate.Text = "Create";
             this.BTNcreate.UseVisualStyleBackColor = true;
+            this.BTNcreate.Click += new System.EventHandler(this.BTNcreate_Click);
             // 
             // BTNread
             // 
