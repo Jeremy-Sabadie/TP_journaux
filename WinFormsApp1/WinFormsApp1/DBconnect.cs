@@ -65,15 +65,18 @@ namespace WinFormsApp1
             try
             {
                 RequestConnect.Open();
-                string Query = "DELETE FROM article where @id= IDArticle;";
-                var res = RequestConnect.Execute(Query, new { id });
 
-                return res;
+                string query = "DELETE FROM  article WHERE IDArticle = @id;";
+
+                var deletedRow = RequestConnect.Execute(query, new { id });
+                return deletedRow;
+            }
+            finally
+            {
+                RequestConnect.Close();
             }
 
-            finally { RequestConnect.Close(); }
         }
-
     }
 }
 

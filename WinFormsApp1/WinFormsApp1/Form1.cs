@@ -63,22 +63,28 @@ namespace WinFormsApp1
         private void BTNcreate_Click(object sender, EventArgs e)
         {
             _dbRequest.InsertArticle(TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
+            BTNread.PerformClick();
         }
 
         private void BTNdelete_Click(object sender, EventArgs e)
         {
-            var selected = BsArticle.Current as Article;
-            if (selected is not null)
             {
-                _dbRequest.DeleteArticle(selected.IDAricle);
+                var current = BsArticle.Current as Article;
+
+
+                if (current is not null)
+                {
+                    _dbRequest.DeleteArticle(current.IDArticle);
+                    BTNread.PerformClick();
+                }
+
+
+                //private void TLPmain_Paint(object sender, PaintEventArgs e)
+                //    {
+
+                //    }
             }
-            BTNread.PerformClick();
         }
-
-        //private void TLPmain_Paint(object sender, PaintEventArgs e)
-        //    {
-
-        //    }
     }
 }
 
