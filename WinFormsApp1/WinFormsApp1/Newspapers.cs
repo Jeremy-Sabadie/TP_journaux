@@ -4,6 +4,6 @@
     {
         public int IDJournal { get; set; }
         public string Titre { get; set; }
-        public DateTime DtParution { get; set; }
+        public DateTime? DtParution { get; set; }
     }
 }

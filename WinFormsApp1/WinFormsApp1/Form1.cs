@@ -42,13 +42,10 @@ namespace WinFormsApp1
 
         private void BTNshowNews_Click(object sender, EventArgs e)
         {
-            using (Form Journaux = new Form())
+            using (Form Composition = new Form())
             {
-                Journaux.Text = "journeaux";
-                DialogResult res = Journaux.ShowDialog();
-
-
-
+                Composition.Text = "composition";
+                DialogResult rescompo = Composition.ShowDialog();
 
                 var newspapers = _dbRequest.GetAllNewspapers();
                 _lstNewspaper.Clear();
@@ -56,6 +53,7 @@ namespace WinFormsApp1
                 {
                     _lstNewspaper.Add(newspaper);
                 }
+
 
             }
         }
@@ -83,9 +81,9 @@ namespace WinFormsApp1
                 //private void TLPmain_Paint(object sender, PaintEventArgs e)
                 //    {
 
-                //    }
             }
         }
+
 
         private void BTNupdate_Click(object sender, EventArgs e)
         {

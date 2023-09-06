@@ -177,6 +177,7 @@
             this.BBTNcreateNewspaper.TabIndex = 0;
             this.BBTNcreateNewspaper.Text = "Create";
             this.BBTNcreateNewspaper.UseVisualStyleBackColor = true;
+            this.BBTNcreateNewspaper.Click += new System.EventHandler(this.BBTNcreateNewspaper_Click);
             // 
             // BTNreadNewspaper
             // 
@@ -186,6 +187,7 @@
             this.BTNreadNewspaper.TabIndex = 1;
             this.BTNreadNewspaper.Text = "Read";
             this.BTNreadNewspaper.UseVisualStyleBackColor = true;
+            this.BTNreadNewspaper.Click += new System.EventHandler(this.BTNreadNewspaper_Click);
             // 
             // BTupdate
             // 
@@ -195,6 +197,7 @@
             this.BTupdate.TabIndex = 2;
             this.BTupdate.Text = "Update";
             this.BTupdate.UseVisualStyleBackColor = true;
+            this.BTupdate.Click += new System.EventHandler(this.BTupdate_Click);
             // 
             // BTNdeleteNewspaper
             // 
@@ -204,6 +207,7 @@
             this.BTNdeleteNewspaper.TabIndex = 3;
             this.BTNdeleteNewspaper.Text = "Delete";
             this.BTNdeleteNewspaper.UseVisualStyleBackColor = true;
+            this.BTNdeleteNewspaper.Click += new System.EventHandler(this.BTNdeleteNewspaper_Click);
             // 
             // journaux
             // 
