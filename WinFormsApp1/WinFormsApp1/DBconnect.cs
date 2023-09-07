@@ -10,7 +10,7 @@ namespace WinFormsApp1
     {
         MySqlConnection RequestConnect = new(Settings.Default.stringConnectionnection);
 
-        #region [article queries]
+        #region article queries
         public IEnumerable<Article> GetAllArticles()
         {
             try
@@ -57,14 +57,7 @@ namespace WinFormsApp1
                 RequestConnect.Open();
                 string query = "UPDATE article SET Titre = @new_titre, Corps=@new_corps, Auteur=@new_auteur WHERE  Titre = @old_titre AND Corps=@old_corps;";
                 var updated = RequestConnect.Execute(query, new { id, old_titre, old_corps, old_auteur, new_titre, new_corps, new_auteur });
-                if (updated > 0)
-                {
-                    MessageBox.Show($"article: {old_titre} de:{old_auteur} à bien été mis à jour avec comme titre: {new_titre} et auteur: {new_auteur}.");
-                }
-                else
-                {
-                    MessageBox.Show($"la mise à jour de l'article: {old_titre} de:{old_auteur} n'a pas réussie.");
-                }
+
                 return updated;
             }
             finally
@@ -85,14 +78,16 @@ namespace WinFormsApp1
 
                 var articleDeletedRow = RequestConnect.Execute(delete_article_query, new { id });
 
+
+
                 return articleDeletedRow;
+
             }
             finally
             {
                 RequestConnect.Close();
             }
         }
-
         #endregion
 
 
@@ -117,30 +112,24 @@ namespace WinFormsApp1
             {
                 RequestConnect.Open();
 
-                var query = "INSERT ignore INTO journal (Titre,DtParution) VALUES (@titre, @corps, @DtParution);";
+                var query = "INSERT  ignore INTO journal (Titre,DtParution) VALUES (@titre, @DtParution);";
 
-                var result = RequestConnect.Query<int>(query, new { titre, DtParution });
-                if (result.Single() > 0)
-                {
-                    MessageBox.Show($"le journal: {titre} à bien été enregistré.");
+                var res = RequestConnect.Execute(query, new { titre, DtParution });
 
-                    return result.Single();
-                }
-                else
-                {
-                    MessageBox.Show($"le journarl: {titre} n'à pas été enregistré.");
-                    return result.Single();
-                }
+                return res;
             }
+
             finally { RequestConnect.Close(); }
         }
         public int DeleteNewspaper(int id)
         {
             try
             {
+                string delete_journal_query = "DELETE FROM journal WHERE IDJournal = @id";
+                RequestConnect.Execute(delete_journal_query, new { id });
                 RequestConnect.Open();
 
-                string delete_journal_query = "DELETE FROM journal WHERE IDJournal = @id";
+
 
                 var journalDeletedRow = RequestConnect.Execute(delete_journal_query, new { id });
 

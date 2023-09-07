@@ -29,8 +29,11 @@ namespace WinFormsApp1
 
             if (current is not null)
             {
-                _dbQuery.DeleteNewspaper(current.IDJournal);
-                BTNreadNewspaper.PerformClick();
+                if (MessageBox.Show($"Accepter la suppression de l'article {current.Titre} ?", "Suprression", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    _dbQuery.DeleteNewspaper(current.IDJournal);
+                    BTNreadNewspaper.PerformClick();
+                }
             }
         }
 
@@ -42,9 +45,14 @@ namespace WinFormsApp1
 
         private void BBTNcreateNewspaper_Click(object sender, EventArgs e)
         {
+            var current = BSnewspaper.Current as Newspapers;
             BSnewspaper.Clear();
-            _dbQuery.InsertNewspaper(TXTtitre.Text, DTPdate.Value);
-            BTNreadNewspaper.PerformClick();
+            var inserted = _dbQuery.InsertNewspaper(TXTtitre.Text, DTPdate.Value);
+            if (inserted > 0)
+            {
+                MessageBox.Show($"le journal: {TXTtitre.Text} à bien été enregistré.");
+                BTNreadNewspaper.PerformClick();
+            }
         }
 
         private void BTNreadNewspaper_Click(object sender, EventArgs e)

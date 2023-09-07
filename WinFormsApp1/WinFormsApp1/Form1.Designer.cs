@@ -1,7 +1,7 @@
 ﻿namespace WinFormsApp1
 {
     partial class Form1
-    {
+    { 
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -171,8 +171,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.005249F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.99475F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.14173F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.85827F));
             this.tableLayoutPanel1.Controls.Add(this.LBtitle, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.LBbody, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.LBautor, 0, 2);
@@ -198,7 +198,7 @@
             this.LBtitle.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.LBtitle.Location = new System.Drawing.Point(3, 0);
             this.LBtitle.Name = "LBtitle";
-            this.LBtitle.Size = new System.Drawing.Size(55, 44);
+            this.LBtitle.Size = new System.Drawing.Size(116, 44);
             this.LBtitle.TabIndex = 0;
             this.LBtitle.Text = "titre";
             this.LBtitle.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -210,7 +210,7 @@
             this.LBbody.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.LBbody.Location = new System.Drawing.Point(3, 44);
             this.LBbody.Name = "LBbody";
-            this.LBbody.Size = new System.Drawing.Size(55, 44);
+            this.LBbody.Size = new System.Drawing.Size(116, 44);
             this.LBbody.TabIndex = 1;
             this.LBbody.Text = "contenu";
             this.LBbody.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -221,7 +221,7 @@
             this.LBautor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LBautor.Location = new System.Drawing.Point(3, 88);
             this.LBautor.Name = "LBautor";
-            this.LBautor.Size = new System.Drawing.Size(55, 33);
+            this.LBautor.Size = new System.Drawing.Size(116, 33);
             this.LBautor.TabIndex = 2;
             this.LBautor.Text = "auteur";
             this.LBautor.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -229,38 +229,38 @@
             // TXTtitle
             // 
             this.TXTtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TXTtitle.Location = new System.Drawing.Point(64, 10);
+            this.TXTtitle.Location = new System.Drawing.Point(125, 10);
             this.TXTtitle.Name = "TXTtitle";
-            this.TXTtitle.Size = new System.Drawing.Size(695, 23);
+            this.TXTtitle.Size = new System.Drawing.Size(634, 23);
             this.TXTtitle.TabIndex = 3;
             this.TXTtitle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // TXTcontent
             // 
             this.TXTcontent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TXTcontent.Location = new System.Drawing.Point(64, 54);
+            this.TXTcontent.Location = new System.Drawing.Point(125, 54);
             this.TXTcontent.Name = "TXTcontent";
-            this.TXTcontent.Size = new System.Drawing.Size(695, 23);
+            this.TXTcontent.Size = new System.Drawing.Size(634, 23);
             this.TXTcontent.TabIndex = 4;
             // 
             // TXTautor
             // 
             this.TXTautor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TXTautor.Location = new System.Drawing.Point(64, 93);
+            this.TXTautor.Location = new System.Drawing.Point(125, 93);
             this.TXTautor.Name = "TXTautor";
-            this.TXTautor.Size = new System.Drawing.Size(695, 23);
+            this.TXTautor.Size = new System.Drawing.Size(634, 23);
             this.TXTautor.TabIndex = 5;
             // 
             // NUDnum
             // 
-            this.NUDnum.Location = new System.Drawing.Point(64, 124);
+            this.NUDnum.Location = new System.Drawing.Point(125, 124);
             this.NUDnum.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.NUDnum.Name = "NUDnum";
-            this.NUDnum.Size = new System.Drawing.Size(695, 23);
+            this.NUDnum.Size = new System.Drawing.Size(633, 23);
             this.NUDnum.TabIndex = 6;
             this.NUDnum.Value = new decimal(new int[] {
             1,
@@ -273,9 +273,9 @@
             this.LBnum.AutoSize = true;
             this.LBnum.Location = new System.Drawing.Point(3, 121);
             this.LBnum.Name = "LBnum";
-            this.LBnum.Size = new System.Drawing.Size(51, 15);
+            this.LBnum.Size = new System.Drawing.Size(108, 15);
             this.LBnum.TabIndex = 7;
-            this.LBnum.Text = "Numéro";
+            this.LBnum.Text = "Numéro du journal";
             // 
             // Form1
             // 
@@ -283,8 +283,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.TLPmain);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Articles";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TLPmain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewdatas)).EndInit();
@@ -316,7 +317,7 @@
         private TextBox TXTautor;
         private BindingSource BsArticle;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private NumericUpDown NUDnum;
         private Label LBnum;
+        private NumericUpDown NUDnum;
     }
 }

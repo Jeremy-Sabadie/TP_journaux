@@ -10,6 +10,8 @@ namespace WinFormsApp1
 
         public Form1()
         {
+            this.Text = "articles.";
+
             InitializeComponent();
             InitializeBinding();
         }
@@ -71,16 +73,18 @@ namespace WinFormsApp1
             {
                 var current = BsArticle.Current as Article;
 
-
                 if (current is not null)
                 {
+                    if (MessageBox.Show($"Accepter la suppression de l'article {current.Titre} ?", "Suprression", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+
+                    {
+                        _dbRequest.DeleteArticle
+                            (current.IDArticle);
+                        BTNread.PerformClick();
+                    }
                     _dbRequest.DeleteArticle(current.IDArticle);
                     BTNread.PerformClick();
                 }
-
-
-                //private void TLPmain_Paint(object sender, PaintEventArgs e)
-                //    {
 
             }
         }
@@ -93,7 +97,15 @@ namespace WinFormsApp1
 
             if (current is not null)
             {
-                _dbRequest.UpdateArticle(current.IDArticle, current.Titre, current.Corps, current.Auteur, TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
+                var updated = _dbRequest.UpdateArticle(current.IDArticle, current.Titre, current.Corps, current.Auteur, TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
+                if (updated > 0)
+                {
+                    MessageBox.Show($"article: {current.Titre} de:{current.Auteur} à bien été mis à jour avec comme titre: {TXTtitle.Text} et auteur: {TXTautor}.");
+                }
+                else
+                {
+                    MessageBox.Show($"la mise à jour de l'article: {current.Titre} de:{current.Auteur} n'a pas réussie.");
+                }
                 BTNread.PerformClick();
             }
         }
