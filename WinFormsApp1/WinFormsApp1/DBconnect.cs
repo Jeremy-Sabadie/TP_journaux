@@ -9,6 +9,7 @@ namespace WinFormsApp1
     internal class DBconnect
     {
         MySqlConnection RequestConnect = new(Settings.Default.stringConnectionnection);
+
         #region [article queries]
         public IEnumerable<Article> GetAllArticles()
         {
@@ -30,23 +31,21 @@ namespace WinFormsApp1
             try
             {
                 RequestConnect.Open();
-                //var transaction = RequestConnect.BeginTransaction();
-                //var compositionQuery = "\"INSERT INTO composition (IDArticle) VALUES (lastinsertid);";
+
                 var articleQuery = "INSERT ignore INTO article (Titre,Corps,Auteur) VALUES (@titre, @corps, @auteur); SELECT LAST_INSERT_ID()";
 
-                var result = RequestConnect.Query<int>(articleQuery, new { GetInsertId = true, titre, corps, auteur, });
-                //var compositionInsert = RequestConnect.Query<int>(compositionQuery, new { id });
-                //transaction.Commit();
-                if (result.Single() > 0)
+                var lastinsertid = RequestConnect.Query<int>(articleQuery, new { titre, corps, auteur, });
+
+                if (lastinsertid.Single() > 0)
                 {
                     MessageBox.Show($"l'article de: {auteur} intitulé: {titre} à bien été enregistré.");
 
-                    return result.Single();
+                    return lastinsertid.Single();
                 }
                 else
                 {
                     MessageBox.Show($"l'article de: {auteur} intitulé: {titre} n'à pas été enregistré.");
-                    return result.Single();
+                    return lastinsertid.Single();
                 }
             }
             finally { RequestConnect.Close(); }
@@ -84,19 +83,13 @@ namespace WinFormsApp1
 
                 string delete_article_query = "DELETE FROM article WHERE IDArticle = @id";
 
-
-                string delete_composition_query = "DELETE FROM composition WHERE IDArticle = @id";
-                // Start a transaction
-                var transaction = RequestConnect.BeginTransaction();
-                var compositionDeletedRow = RequestConnect.Execute(delete_composition_query, new { id });
-
                 var articleDeletedRow = RequestConnect.Execute(delete_article_query, new { id });
-                // Commit the transaction
-                transaction.Commit();
+
                 return articleDeletedRow;
             }
             finally
             {
+                RequestConnect.Close();
             }
         }
 
@@ -147,18 +140,11 @@ namespace WinFormsApp1
             {
                 RequestConnect.Open();
 
-                string delete_article_query = "DELETE FROM jornal WHERE IDJournal = @id";
+                string delete_journal_query = "DELETE FROM journal WHERE IDJournal = @id";
 
+                var journalDeletedRow = RequestConnect.Execute(delete_journal_query, new { id });
 
-                string delete_composition_query = "DELETE FROM composition WHERE IDJournal = @id";
-                // Start a transaction
-                var transaction = RequestConnect.BeginTransaction();
-                var compositionDeletedRow = RequestConnect.Execute(delete_composition_query, new { id });
-
-                var articleDeletedRow = RequestConnect.Execute(delete_article_query, new { id });
-                // Commit the transaction
-                transaction.Commit();
-                return articleDeletedRow;
+                return journalDeletedRow;
             }
             finally
             {
@@ -170,7 +156,7 @@ namespace WinFormsApp1
             try
             {
                 RequestConnect.Open();
-                string query = "UPDATE journal SET Titre = @new_titre, DtParution= new_DtParution  WHERE  Titre = @old_titre AND DtParution= old_DtParution;";
+                string query = "UPDATE journal SET Titre = @new_titre, DtParution= @new_DtParution  WHERE  Titre = @old_titre AND DtParution= @old_DtParution;";
                 var updated = RequestConnect.Execute(query, new { id, old_titre, old_DtParution, new_titre, new_DtParution });
                 if (updated > 0)
                 {

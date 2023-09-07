@@ -18,24 +18,20 @@ namespace WinFormsApp1
             BSnewspaper.DataSource = LstNewspaper;
             DGVjournaux.DataSource = BSnewspaper;
 
-            NUDid.DataBindings.Add("value", BSnewspaper, "IDJournal", false, DataSourceUpdateMode.Never);
+
             TXTtitre.DataBindings.Add("Text", BSnewspaper, "Titre", false, DataSourceUpdateMode.Never);
-            DTPdate.DataBindings.Add("value", BSnewspaper, "DtParution", false, DataSourceUpdateMode.Never);
+            DTPdate.DataBindings.Add("Text", BSnewspaper, "DtParution", false, DataSourceUpdateMode.Never);
         }
 
         private void BTNdeleteNewspaper_Click(object sender, EventArgs e)
         {
             var current = BSnewspaper.Current as Newspapers;
 
-
-
             if (current is not null)
             {
-
-
+                _dbQuery.DeleteNewspaper(current.IDJournal);
+                BTNreadNewspaper.PerformClick();
             }
-            _dbQuery.DeleteArticle(current.IDJournal);
-            BTNreadNewspaper.PerformClick();
         }
 
         private void BTupdate_Click(object sender, EventArgs e)
@@ -59,6 +55,16 @@ namespace WinFormsApp1
             {
                 LstNewspaper.Add(newspaper);
             }
+        }
+
+        private void journaux_Load(object sender, EventArgs e)
+        {
+            ;
+        }
+
+        private void NUDid_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

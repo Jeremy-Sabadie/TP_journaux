@@ -42,10 +42,11 @@ namespace WinFormsApp1
 
         private void BTNshowNews_Click(object sender, EventArgs e)
         {
-            using (Form Composition = new Form())
+            using (journaux frm = new journaux())
             {
-                Composition.Text = "composition";
-                DialogResult rescompo = Composition.ShowDialog();
+                frm.Text = "Les journaux";
+                //DialogResult resJournaux = frm.ShowDialog();
+                frm.ShowDialog();
 
                 var newspapers = _dbRequest.GetAllNewspapers();
                 _lstNewspaper.Clear();
@@ -95,6 +96,11 @@ namespace WinFormsApp1
                 _dbRequest.UpdateArticle(current.IDArticle, current.Titre, current.Corps, current.Auteur, TXTtitle.Text, TXTcontent.Text, TXTautor.Text);
                 BTNread.PerformClick();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

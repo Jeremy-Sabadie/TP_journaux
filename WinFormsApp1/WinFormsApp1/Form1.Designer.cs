@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TLPmain = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewdatas = new System.Windows.Forms.DataGridView();
             this.FLPbuttons = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,12 +46,15 @@
             this.TXTtitle = new System.Windows.Forms.TextBox();
             this.TXTcontent = new System.Windows.Forms.TextBox();
             this.TXTautor = new System.Windows.Forms.TextBox();
+            this.NUDnum = new System.Windows.Forms.NumericUpDown();
+            this.LBnum = new System.Windows.Forms.Label();
             this.BsArticle = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.TLPmain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewdatas)).BeginInit();
             this.FLPbuttons.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDnum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BsArticle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +79,23 @@
             // 
             this.dataGridViewdatas.AllowUserToAddRows = false;
             this.dataGridViewdatas.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewdatas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewdatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewdatas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewdatas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewdatas.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewdatas.Name = "dataGridViewdatas";
@@ -158,13 +179,16 @@
             this.tableLayoutPanel1.Controls.Add(this.TXTtitle, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.TXTcontent, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.TXTautor, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.NUDnum, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.LBnum, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 214);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(762, 127);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(762, 141);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // LBtitle
@@ -174,7 +198,7 @@
             this.LBtitle.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.LBtitle.Location = new System.Drawing.Point(3, 0);
             this.LBtitle.Name = "LBtitle";
-            this.LBtitle.Size = new System.Drawing.Size(55, 47);
+            this.LBtitle.Size = new System.Drawing.Size(55, 44);
             this.LBtitle.TabIndex = 0;
             this.LBtitle.Text = "titre";
             this.LBtitle.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -184,9 +208,9 @@
             this.LBbody.AutoSize = true;
             this.LBbody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LBbody.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.LBbody.Location = new System.Drawing.Point(3, 47);
+            this.LBbody.Location = new System.Drawing.Point(3, 44);
             this.LBbody.Name = "LBbody";
-            this.LBbody.Size = new System.Drawing.Size(55, 47);
+            this.LBbody.Size = new System.Drawing.Size(55, 44);
             this.LBbody.TabIndex = 1;
             this.LBbody.Text = "contenu";
             this.LBbody.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -195,7 +219,7 @@
             // 
             this.LBautor.AutoSize = true;
             this.LBautor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LBautor.Location = new System.Drawing.Point(3, 94);
+            this.LBautor.Location = new System.Drawing.Point(3, 88);
             this.LBautor.Name = "LBautor";
             this.LBautor.Size = new System.Drawing.Size(55, 33);
             this.LBautor.TabIndex = 2;
@@ -205,7 +229,7 @@
             // TXTtitle
             // 
             this.TXTtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TXTtitle.Location = new System.Drawing.Point(64, 12);
+            this.TXTtitle.Location = new System.Drawing.Point(64, 10);
             this.TXTtitle.Name = "TXTtitle";
             this.TXTtitle.Size = new System.Drawing.Size(695, 23);
             this.TXTtitle.TabIndex = 3;
@@ -214,7 +238,7 @@
             // TXTcontent
             // 
             this.TXTcontent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TXTcontent.Location = new System.Drawing.Point(64, 59);
+            this.TXTcontent.Location = new System.Drawing.Point(64, 54);
             this.TXTcontent.Name = "TXTcontent";
             this.TXTcontent.Size = new System.Drawing.Size(695, 23);
             this.TXTcontent.TabIndex = 4;
@@ -222,10 +246,36 @@
             // TXTautor
             // 
             this.TXTautor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TXTautor.Location = new System.Drawing.Point(64, 99);
+            this.TXTautor.Location = new System.Drawing.Point(64, 93);
             this.TXTautor.Name = "TXTautor";
             this.TXTautor.Size = new System.Drawing.Size(695, 23);
             this.TXTautor.TabIndex = 5;
+            // 
+            // NUDnum
+            // 
+            this.NUDnum.Location = new System.Drawing.Point(64, 124);
+            this.NUDnum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NUDnum.Name = "NUDnum";
+            this.NUDnum.Size = new System.Drawing.Size(695, 23);
+            this.NUDnum.TabIndex = 6;
+            this.NUDnum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // LBnum
+            // 
+            this.LBnum.AutoSize = true;
+            this.LBnum.Location = new System.Drawing.Point(3, 121);
+            this.LBnum.Name = "LBnum";
+            this.LBnum.Size = new System.Drawing.Size(51, 15);
+            this.LBnum.TabIndex = 7;
+            this.LBnum.Text = "Numéro";
             // 
             // Form1
             // 
@@ -235,11 +285,13 @@
             this.Controls.Add(this.TLPmain);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.TLPmain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewdatas)).EndInit();
             this.FLPbuttons.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDnum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BsArticle)).EndInit();
             this.ResumeLayout(false);
 
@@ -264,5 +316,7 @@
         private TextBox TXTautor;
         private BindingSource BsArticle;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private NumericUpDown NUDnum;
+        private Label LBnum;
     }
 }
