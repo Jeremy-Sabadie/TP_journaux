@@ -45,12 +45,13 @@ namespace WinFormsApp1
 
         private void BBTNcreateNewspaper_Click(object sender, EventArgs e)
         {
+            var titre = TXTtitre.Text;
             var current = BSnewspaper.Current as Newspapers;
             BSnewspaper.Clear();
             var inserted = _dbQuery.InsertNewspaper(TXTtitre.Text, DTPdate.Value);
             if (inserted > 0)
             {
-                MessageBox.Show($"le journal: {TXTtitre.Text} à bien été enregistré.");
+                MessageBox.Show($"le journal: {titre} à bien été enregistré.");
                 BTNreadNewspaper.PerformClick();
             }
         }

@@ -68,24 +68,33 @@ namespace WinFormsApp1
 
         }
 
-        public int DeleteArticle(int id)
+        public bool DeleteArticle(int id)
         {
-            try
             {
-                RequestConnect.Open();
+                try
+                {
 
-                string delete_article_query = "DELETE FROM article WHERE IDArticle = @id";
-
-                var articleDeletedRow = RequestConnect.Execute(delete_article_query, new { id });
-
+                    RequestConnect.Open();
 
 
-                return articleDeletedRow;
 
-            }
-            finally
-            {
-                RequestConnect.Close();
+                    var isInComposition = RequestConnect.QuerySingle<int>("SELECT COUNT(*) FROM composition WHERE IDArticle = @id;", new { id });
+                    if (isInComposition > 0)
+                    {
+                        MessageBox.Show($"L'article n°{id} est impossible à supprimer.");
+                        return false;
+                    }
+                    int rowsAffected = RequestConnect.Execute("DELETE FROM article WHERE IDArticle = @id;", new { id });
+                    RequestConnect.Close();
+
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Erreur!");
+                    return false;
+                }
             }
         }
         #endregion
