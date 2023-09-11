@@ -70,8 +70,8 @@
             this.TLPmain.Name = "TLPmain";
             this.TLPmain.RowCount = 3;
             this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.11111F));
-            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.66667F));
-            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.22222F));
+            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.11111F));
+            this.TLPmain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18F));
             this.TLPmain.Size = new System.Drawing.Size(800, 450);
             this.TLPmain.TabIndex = 0;
             // 
@@ -113,9 +113,9 @@
             this.FLPbuttons.Controls.Add(this.BTNdelete);
             this.FLPbuttons.Controls.Add(this.BTNshowNews);
             this.FLPbuttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FLPbuttons.Location = new System.Drawing.Point(3, 361);
+            this.FLPbuttons.Location = new System.Drawing.Point(3, 371);
             this.FLPbuttons.Name = "FLPbuttons";
-            this.FLPbuttons.Size = new System.Drawing.Size(794, 86);
+            this.FLPbuttons.Size = new System.Drawing.Size(794, 76);
             this.FLPbuttons.TabIndex = 1;
             // 
             // BTNcreate
@@ -132,15 +132,15 @@
             // 
             this.BTNread.Location = new System.Drawing.Point(107, 3);
             this.BTNread.Name = "BTNread";
-            this.BTNread.Size = new System.Drawing.Size(91, 54);
+            this.BTNread.Size = new System.Drawing.Size(130, 54);
             this.BTNread.TabIndex = 1;
-            this.BTNread.Text = "Read";
+            this.BTNread.Text = "Voir les articles";
             this.BTNread.UseVisualStyleBackColor = true;
             this.BTNread.Click += new System.EventHandler(this.BTNread_Click);
             // 
             // BTNupdate
             // 
-            this.BTNupdate.Location = new System.Drawing.Point(204, 3);
+            this.BTNupdate.Location = new System.Drawing.Point(243, 3);
             this.BTNupdate.Name = "BTNupdate";
             this.BTNupdate.Size = new System.Drawing.Size(97, 54);
             this.BTNupdate.TabIndex = 2;
@@ -150,7 +150,7 @@
             // 
             // BTNdelete
             // 
-            this.BTNdelete.Location = new System.Drawing.Point(307, 3);
+            this.BTNdelete.Location = new System.Drawing.Point(346, 3);
             this.BTNdelete.Name = "BTNdelete";
             this.BTNdelete.Size = new System.Drawing.Size(93, 54);
             this.BTNdelete.TabIndex = 3;
@@ -160,7 +160,7 @@
             // 
             // BTNshowNews
             // 
-            this.BTNshowNews.Location = new System.Drawing.Point(406, 3);
+            this.BTNshowNews.Location = new System.Drawing.Point(445, 3);
             this.BTNshowNews.Name = "BTNshowNews";
             this.BTNshowNews.Size = new System.Drawing.Size(109, 54);
             this.BTNshowNews.TabIndex = 4;

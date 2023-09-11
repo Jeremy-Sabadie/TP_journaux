@@ -81,18 +81,19 @@ namespace WinFormsApp1
                     var isInComposition = RequestConnect.QuerySingle<int>("SELECT COUNT(*) FROM composition WHERE IDArticle = @id;", new { id });
                     if (isInComposition > 0)
                     {
-                        MessageBox.Show($"L'article n°{id} est impossible à supprimer.");
+                        MessageBox.Show($"L'article n°{id} est impossible à supprimer car il appartient au moins à un journal.");
                         return false;
+                        RequestConnect.Close();
                     }
                     int rowsAffected = RequestConnect.Execute("DELETE FROM article WHERE IDArticle = @id;", new { id });
                     RequestConnect.Close();
 
                     return rowsAffected > 0;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
-                    MessageBox.Show("Erreur!");
+                    MessageBox.Show("Erreur lors de la suppression!");
                     return false;
                 }
             }

@@ -114,6 +114,11 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void BTrearticle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

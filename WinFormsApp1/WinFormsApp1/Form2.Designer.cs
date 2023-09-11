@@ -179,7 +179,7 @@
             this.BTNreadNewspaper.Name = "BTNreadNewspaper";
             this.BTNreadNewspaper.Size = new System.Drawing.Size(102, 49);
             this.BTNreadNewspaper.TabIndex = 1;
-            this.BTNreadNewspaper.Text = "Read";
+            this.BTNreadNewspaper.Text = "Voir les journaux";
             this.BTNreadNewspaper.UseVisualStyleBackColor = true;
             this.BTNreadNewspaper.Click += new System.EventHandler(this.BTNreadNewspaper_Click);
             // 

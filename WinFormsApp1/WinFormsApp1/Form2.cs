@@ -75,5 +75,24 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void BTrearticles_Click(object sender, EventArgs e)
+        {
+            using (journaux frmArticles = new journaux())
+            {
+                frmArticles.Text = "Les articles";
+                //DialogResult resJournaux = frm.ShowDialog();
+                frmArticles.ShowDialog();
+
+                var newspapers = _dbQuery.GetAllNewspapers();
+                LstNewspaper.Clear();
+                foreach (Newspapers newspaper in newspapers)
+                {
+                    LstNewspaper.Add(newspaper);
+                }
+
+
+            }
+        }
     }
 }
