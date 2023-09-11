@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TLPmain = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewdatas = new System.Windows.Forms.DataGridView();
             this.FLPbuttons = new System.Windows.Forms.FlowLayoutPanel();
@@ -50,6 +50,7 @@
             this.LBnum = new System.Windows.Forms.Label();
             this.BsArticle = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.BTshowCompo = new System.Windows.Forms.Button();
             this.TLPmain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewdatas)).BeginInit();
             this.FLPbuttons.SuspendLayout();
@@ -79,23 +80,23 @@
             // 
             this.dataGridViewdatas.AllowUserToAddRows = false;
             this.dataGridViewdatas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewdatas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewdatas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewdatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewdatas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewdatas.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewdatas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewdatas.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewdatas.Name = "dataGridViewdatas";
@@ -112,6 +113,7 @@
             this.FLPbuttons.Controls.Add(this.BTNupdate);
             this.FLPbuttons.Controls.Add(this.BTNdelete);
             this.FLPbuttons.Controls.Add(this.BTNshowNews);
+            this.FLPbuttons.Controls.Add(this.BTshowCompo);
             this.FLPbuttons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FLPbuttons.Location = new System.Drawing.Point(3, 371);
             this.FLPbuttons.Name = "FLPbuttons";
@@ -277,6 +279,16 @@
             this.LBnum.TabIndex = 7;
             this.LBnum.Text = "Numéro du journal";
             // 
+            // BTshowCompo
+            // 
+            this.BTshowCompo.Location = new System.Drawing.Point(560, 3);
+            this.BTshowCompo.Name = "BTshowCompo";
+            this.BTshowCompo.Size = new System.Drawing.Size(135, 54);
+            this.BTshowCompo.TabIndex = 5;
+            this.BTshowCompo.Text = "Voir les compositions";
+            this.BTshowCompo.UseVisualStyleBackColor = true;
+            this.BTshowCompo.Click += new System.EventHandler(this.BTshowCompo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -319,5 +331,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Label LBnum;
         private NumericUpDown NUDnum;
+        private Button BTshowCompo;
     }
 }

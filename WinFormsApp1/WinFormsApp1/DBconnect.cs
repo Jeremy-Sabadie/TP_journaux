@@ -176,6 +176,45 @@ namespace WinFormsApp1
         }
         #endregion
 
+        public IEnumerable<composition> GetAllCompo()
+        {
+            try
+            {
+                RequestConnect.Open();
+                string query = "select * FROM composition;";
+                var compo = RequestConnect.Query<composition>(query);
+                return compo;
+            }
+            finally
+            {
+                RequestConnect.Close();
+            }
+        }
+        public int CreateCompo(decimal IDArticle, decimal IDJournal)
+
+        {
+            string query = "INSERT into composition (IDArticle,IDJournal) VALUES (IDArticle,IDJournal);";
+            try
+            {
+                var created = RequestConnect.Execute(query);
+                return created;
+            }
+            finally
+            {
+                RequestConnect.Close();
+            }
+        }
+        public int UpdateCompo(decimal odlNUMart, decimal oldNUMnewspapper, decimal newNumart, decimal newNumNews)
+        {
+            try
+            {
+                RequestConnect.Open();
+                string query = "UPDATE composition SET IDArticle= @newNumart, IDJournal= @newNumNews WHERE IDArticle = @current OR IDJournal = @currentNewspapper;";
+                var updated = RequestConnect.Execute(query);
+                return updated;
+            }
+            finally { RequestConnect.Close(); }
+        }
     }
 }
 

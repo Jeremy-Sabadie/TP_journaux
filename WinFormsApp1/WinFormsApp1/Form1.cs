@@ -5,8 +5,10 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         DBconnect _dbRequest = new();
+
         BindingList<Article> _lstArticles;
         BindingList<Newspapers> _lstNewspaper;
+        BindingList<composition> _lstCompos;
 
         public Form1()
         {
@@ -118,6 +120,23 @@ namespace WinFormsApp1
         private void BTrearticle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BTshowCompo_Click(object sender, EventArgs e)
+        {
+            using (composition compoFfrm = new composition())
+            {
+                compoFfrm.Text = "Les compositions";
+
+                compoFfrm.ShowDialog();
+
+                var compos = _dbRequest.GetAllCompo();
+                lstCompos;
+                foreach (composition compo in compos)
+                {
+                    lstCompos.Add(compo);
+                }
+            }
         }
     }
 }
