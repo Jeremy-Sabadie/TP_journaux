@@ -133,22 +133,26 @@ namespace WinFormsApp1
         }
         public int DeleteNewspaper(int id)
         {
+            string deleteFromCompo = "delete from compositiion where IDJournal = @id;";
+            string deleteFromNewspapper = "delete from journal wheere IDJournarl = @id;";
+
+            RequestConnect.Open();
             try
             {
-                string delete_journal_query = "DELETE FROM journal WHERE IDJournal = @id";
-                RequestConnect.Execute(delete_journal_query, new { id });
-                RequestConnect.Open();
+                using (var transaction = RequestConnect.BeginTransaction())
+                {
+                    string delete_journal_query = "DELETE FROM journal WHERE IDJournal = @id";
+                    RequestConnect.Execute(deleteFromCompo, new { id });
+                    var result = RequestConnect.Execute(delete_journal_query, new { id });
 
-
-
-                var journalDeletedRow = RequestConnect.Execute(delete_journal_query, new { id });
-
-                return journalDeletedRow;
+                    transaction.Commit();
+                    return result;
+                }
             }
-            finally
-            {
-                RequestConnect.Close();
-            }
+            finally { RequestConnect.Close(); }
+
+
+
         }
         public int UpdateNewspaper(int id, string old_titre, DateTime? old_DtParution, string new_titre, DateTime new_DtParution)
         {

@@ -20,8 +20,8 @@ namespace WinFormsApp1
             BScompo.DataSource = _lstCompo;
             DGVcompo.DataSource = BScompo.DataSource = _lstCompo;
 
-            NUMarticle.DataBindings.Add("Text", BScompo, "Titre", false, DataSourceUpdateMode.Never);
-            NUMnewspaper.DataBindings.Add("Text", BScompo, "Titre", false, DataSourceUpdateMode.Never);
+            NUMarticle.DataBindings.Add("Text", BScompo, "IDArticle", false, DataSourceUpdateMode.Never);
+            NUMnewspaper.DataBindings.Add("Text", BScompo, "IDJournal", false, DataSourceUpdateMode.Never);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -40,7 +40,13 @@ namespace WinFormsApp1
 
         private void BTview_compo_Click(object sender, EventArgs e)
         {
-            _DBCompo.GetAllCompo();
+            var compos = _DBCompo.GetAllCompo();
+            _lstCompo.Clear();
+            foreach (composition compo in compos)
+            {
+                _lstCompo.Add(compo);
+            }
+
         }
 
         private void BTlink_Click(object sender, EventArgs e)

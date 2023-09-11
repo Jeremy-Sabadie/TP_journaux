@@ -87,8 +87,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 228);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.75343F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.24657F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.05479F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.94521F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 219);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -153,9 +153,9 @@
             this.flowLayoutPanel1.Controls.Add(this.BTlink);
             this.flowLayoutPanel1.Controls.Add(this.BTupdateCompo);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 147);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 116);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(788, 69);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(788, 100);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // BTview_compo

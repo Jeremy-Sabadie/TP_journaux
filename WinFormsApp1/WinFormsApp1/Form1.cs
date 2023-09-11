@@ -124,17 +124,19 @@ namespace WinFormsApp1
 
         private void BTshowCompo_Click(object sender, EventArgs e)
         {
-            using (composition compoFfrm = new composition())
+            using (composition compoFrm = new composition())
             {
-                compoFfrm.Text = "Les compositions";
+                compoFrm.Text = "Les compositions";
 
-                compoFfrm.ShowDialog();
+                compoFrm.ShowDialog();
 
-                var compos = _dbRequest.GetAllCompo();
-                lstCompos;
-                foreach (composition compo in compos)
+                var allCompos = _dbRequest.GetAllCompo();
+
+                _lstCompos.Clear();
+
+                foreach (composition compo in allCompos)
                 {
-                    lstCompos.Add(compo);
+                    _lstCompos.Add(compo);
                 }
             }
         }
