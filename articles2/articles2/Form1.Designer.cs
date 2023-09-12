@@ -42,16 +42,16 @@
             this.BTRead = new System.Windows.Forms.Button();
             this.BTUpdate = new System.Windows.Forms.Button();
             this.BTDelete = new System.Windows.Forms.Button();
-            this.BSArticle = new System.Windows.Forms.BindingSource(this.components);
-            this.BSJounal = new System.Windows.Forms.BindingSource(this.components);
-            this.BSComps = new System.Windows.Forms.BindingSource(this.components);
             this.TLPcontainer = new System.Windows.Forms.TableLayoutPanel();
-            this.TXTtitr = new System.Windows.Forms.TextBox();
+            this.TXTtitre = new System.Windows.Forms.TextBox();
             this.TXTcontenu = new System.Windows.Forms.TextBox();
             this.TXTauteur = new System.Windows.Forms.TextBox();
             this.LBtitre = new System.Windows.Forms.Label();
             this.LBcorps = new System.Windows.Forms.Label();
             this.LBauteur = new System.Windows.Forms.Label();
+            this.BSArticle = new System.Windows.Forms.BindingSource(this.components);
+            this.BSJounal = new System.Windows.Forms.BindingSource(this.components);
+            this.BSComps = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.TC1.SuspendLayout();
             this.tabPageArticle.SuspendLayout();
@@ -61,10 +61,10 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCompos)).BeginInit();
             this.FLPContainerBTN.SuspendLayout();
+            this.TLPcontainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BSArticle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSJounal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSComps)).BeginInit();
-            this.TLPcontainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -219,7 +219,7 @@
             this.TLPcontainer.ColumnCount = 2;
             this.TLPcontainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.TLPcontainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.TLPcontainer.Controls.Add(this.TXTtitr, 1, 0);
+            this.TLPcontainer.Controls.Add(this.TXTtitre, 1, 0);
             this.TLPcontainer.Controls.Add(this.TXTcontenu, 1, 1);
             this.TLPcontainer.Controls.Add(this.TXTauteur, 1, 2);
             this.TLPcontainer.Controls.Add(this.LBtitre, 0, 0);
@@ -235,13 +235,13 @@
             this.TLPcontainer.Size = new System.Drawing.Size(794, 122);
             this.TLPcontainer.TabIndex = 2;
             // 
-            // TXTtitr
+            // TXTtitre
             // 
-            this.TXTtitr.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TXTtitr.Location = new System.Drawing.Point(161, 3);
-            this.TXTtitr.Name = "TXTtitr";
-            this.TXTtitr.Size = new System.Drawing.Size(630, 23);
-            this.TXTtitr.TabIndex = 0;
+            this.TXTtitre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TXTtitre.Location = new System.Drawing.Point(161, 3);
+            this.TXTtitre.Name = "TXTtitre";
+            this.TXTtitre.Size = new System.Drawing.Size(630, 23);
+            this.TXTtitre.TabIndex = 0;
             // 
             // TXTcontenu
             // 
@@ -310,11 +310,11 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVCompos)).EndInit();
             this.FLPContainerBTN.ResumeLayout(false);
+            this.TLPcontainer.ResumeLayout(false);
+            this.TLPcontainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BSArticle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSJounal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSComps)).EndInit();
-            this.TLPcontainer.ResumeLayout(false);
-            this.TLPcontainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -338,7 +338,7 @@
         private BindingSource BSJounal;
         private BindingSource BSComps;
         private TableLayoutPanel TLPcontainer;
-        private TextBox TXTtitr;
+        private TextBox TXTtitre;
         private TextBox TXTcontenu;
         private TextBox TXTauteur;
         private Label LBtitre;

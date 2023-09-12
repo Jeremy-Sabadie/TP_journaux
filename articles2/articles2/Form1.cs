@@ -35,7 +35,7 @@ namespace articles2
 
         private void BTCreate_Click(object sender, EventArgs e)
         {
-            _DBCall.InsertArticle(TXTtitre.text,);
+            _DBCall.InsertArticle(TXTtitre.Text, TXTcontenu.Text, TXTauteur.Text);
         }
 
         private void FLPContainerBTN_Paint(object sender, PaintEventArgs e)
