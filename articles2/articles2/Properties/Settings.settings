@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="articles2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DBconnect" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=lab005.2isa.org;Port=33005;Database=dbWinForm;UID=root;PWD=1365lab005</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
