@@ -45,6 +45,13 @@
             this.BSArticle = new System.Windows.Forms.BindingSource(this.components);
             this.BSJounal = new System.Windows.Forms.BindingSource(this.components);
             this.BSComps = new System.Windows.Forms.BindingSource(this.components);
+            this.TLPcontainer = new System.Windows.Forms.TableLayoutPanel();
+            this.TXTtitr = new System.Windows.Forms.TextBox();
+            this.TXTcontenu = new System.Windows.Forms.TextBox();
+            this.TXTauteur = new System.Windows.Forms.TextBox();
+            this.LBtitre = new System.Windows.Forms.Label();
+            this.LBcorps = new System.Windows.Forms.Label();
+            this.LBauteur = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.TC1.SuspendLayout();
             this.tabPageArticle.SuspendLayout();
@@ -57,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BSArticle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSJounal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSComps)).BeginInit();
+            this.TLPcontainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,6 +73,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.TC1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.FLPContainerBTN, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.TLPcontainer, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -116,7 +125,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(786, 233);
+            this.tabPage2.Size = new System.Drawing.Size(786, 215);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Journaux";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -128,7 +137,7 @@
             this.DGVJournaux.Location = new System.Drawing.Point(3, 3);
             this.DGVJournaux.Name = "DGVJournaux";
             this.DGVJournaux.RowTemplate.Height = 25;
-            this.DGVJournaux.Size = new System.Drawing.Size(780, 227);
+            this.DGVJournaux.Size = new System.Drawing.Size(780, 209);
             this.DGVJournaux.TabIndex = 0;
             // 
             // tabPage1
@@ -136,7 +145,7 @@
             this.tabPage1.Controls.Add(this.DGVCompos);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(786, 233);
+            this.tabPage1.Size = new System.Drawing.Size(786, 215);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Compositions";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -148,7 +157,7 @@
             this.DGVCompos.Location = new System.Drawing.Point(0, 0);
             this.DGVCompos.Name = "DGVCompos";
             this.DGVCompos.RowTemplate.Height = 25;
-            this.DGVCompos.Size = new System.Drawing.Size(786, 233);
+            this.DGVCompos.Size = new System.Drawing.Size(786, 215);
             this.DGVCompos.TabIndex = 0;
             // 
             // FLPContainerBTN
@@ -162,6 +171,7 @@
             this.FLPContainerBTN.Name = "FLPContainerBTN";
             this.FLPContainerBTN.Size = new System.Drawing.Size(794, 72);
             this.FLPContainerBTN.TabIndex = 1;
+            this.FLPContainerBTN.Paint += new System.Windows.Forms.PaintEventHandler(this.FLPContainerBTN_Paint);
             // 
             // BTCreate
             // 
@@ -172,6 +182,7 @@
             this.BTCreate.TabIndex = 0;
             this.BTCreate.Text = "Créer";
             this.BTCreate.UseVisualStyleBackColor = true;
+            this.BTCreate.Click += new System.EventHandler(this.BTCreate_Click);
             // 
             // BTRead
             // 
@@ -203,6 +214,84 @@
             this.BTDelete.Text = "Supprimer";
             this.BTDelete.UseVisualStyleBackColor = true;
             // 
+            // TLPcontainer
+            // 
+            this.TLPcontainer.ColumnCount = 2;
+            this.TLPcontainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.TLPcontainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.TLPcontainer.Controls.Add(this.TXTtitr, 1, 0);
+            this.TLPcontainer.Controls.Add(this.TXTcontenu, 1, 1);
+            this.TLPcontainer.Controls.Add(this.TXTauteur, 1, 2);
+            this.TLPcontainer.Controls.Add(this.LBtitre, 0, 0);
+            this.TLPcontainer.Controls.Add(this.LBcorps, 0, 1);
+            this.TLPcontainer.Controls.Add(this.LBauteur, 0, 2);
+            this.TLPcontainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TLPcontainer.Location = new System.Drawing.Point(3, 330);
+            this.TLPcontainer.Name = "TLPcontainer";
+            this.TLPcontainer.RowCount = 3;
+            this.TLPcontainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TLPcontainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TLPcontainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.TLPcontainer.Size = new System.Drawing.Size(794, 122);
+            this.TLPcontainer.TabIndex = 2;
+            // 
+            // TXTtitr
+            // 
+            this.TXTtitr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TXTtitr.Location = new System.Drawing.Point(161, 3);
+            this.TXTtitr.Name = "TXTtitr";
+            this.TXTtitr.Size = new System.Drawing.Size(630, 23);
+            this.TXTtitr.TabIndex = 0;
+            // 
+            // TXTcontenu
+            // 
+            this.TXTcontenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TXTcontenu.Location = new System.Drawing.Point(161, 34);
+            this.TXTcontenu.Name = "TXTcontenu";
+            this.TXTcontenu.Size = new System.Drawing.Size(630, 23);
+            this.TXTcontenu.TabIndex = 1;
+            // 
+            // TXTauteur
+            // 
+            this.TXTauteur.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TXTauteur.Location = new System.Drawing.Point(161, 65);
+            this.TXTauteur.Name = "TXTauteur";
+            this.TXTauteur.Size = new System.Drawing.Size(630, 23);
+            this.TXTauteur.TabIndex = 2;
+            // 
+            // LBtitre
+            // 
+            this.LBtitre.AutoSize = true;
+            this.LBtitre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LBtitre.Location = new System.Drawing.Point(3, 0);
+            this.LBtitre.Name = "LBtitre";
+            this.LBtitre.Size = new System.Drawing.Size(152, 31);
+            this.LBtitre.TabIndex = 3;
+            this.LBtitre.Text = "Ttre";
+            this.LBtitre.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // LBcorps
+            // 
+            this.LBcorps.AutoSize = true;
+            this.LBcorps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LBcorps.Location = new System.Drawing.Point(3, 31);
+            this.LBcorps.Name = "LBcorps";
+            this.LBcorps.Size = new System.Drawing.Size(152, 31);
+            this.LBcorps.TabIndex = 4;
+            this.LBcorps.Text = "Contenu";
+            this.LBcorps.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // LBauteur
+            // 
+            this.LBauteur.AutoSize = true;
+            this.LBauteur.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LBauteur.Location = new System.Drawing.Point(3, 62);
+            this.LBauteur.Name = "LBauteur";
+            this.LBauteur.Size = new System.Drawing.Size(152, 60);
+            this.LBauteur.TabIndex = 5;
+            this.LBauteur.Text = "Auteur";
+            this.LBauteur.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -224,6 +313,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BSArticle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSJounal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSComps)).EndInit();
+            this.TLPcontainer.ResumeLayout(false);
+            this.TLPcontainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -246,5 +337,12 @@
         private BindingSource BSArticle;
         private BindingSource BSJounal;
         private BindingSource BSComps;
+        private TableLayoutPanel TLPcontainer;
+        private TextBox TXTtitr;
+        private TextBox TXTcontenu;
+        private TextBox TXTauteur;
+        private Label LBtitre;
+        private Label LBcorps;
+        private Label LBauteur;
     }
 }
