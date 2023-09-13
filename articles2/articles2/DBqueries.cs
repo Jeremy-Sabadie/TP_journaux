@@ -5,7 +5,7 @@ namespace articles2
 {
     internal class DBqueries
     {
-        MySqlConnection DBRequest = new("Server = lab005.2isa.org; Port=33005;Database=dbWinForm;UID=root;PWD=1365lab005");
+        MySqlConnection DBRequest = new("Server = lab005.2isa.org; Port=33005;Database=Edito;UID=root;PWD=1365lab005");
         #region Article functions
         public IEnumerable<Article> GetAllArticles()
         {
@@ -22,7 +22,7 @@ namespace articles2
 
         public int InsertArticle(string titre, string corps, string auteur)
         {
-            string query = "Insert into article (titre, Corps,auteur) values(@titre,@corps,@auteur)";
+            string query = "Insert into article (Titre, Corps,auteur) values(@titre,@corps,@auteur)";
             try
             {
                 DBRequest.Open();
@@ -34,10 +34,12 @@ namespace articles2
                 DBRequest.Close();
             }
         }
-        public int UpdateArticle(int IDArticle, string oldTitre, string oldContent, string oldAutor, string newTitle, string newContent, string newAutor)
+        public int UpdateArticle(int IDArticle, string newTitle, string newContent, string newAutor)
         {
-            string query = "update article set(Titre,Corps, Auteur) values(@newTitle,@newContent,@newAutor);";
-            int result = DBRequest.Execute(query, new { IDArticle, oldTitre, oldContent, oldAutor, newTitle, newContent, newAutor });
+            string query = "UPDATE article                SET Titre = @NewTitle, Corps=@NewContent, Auteur=@newAutor WHERE  IDArticle = @IDArticle";
+
+
+            int result = DBRequest.Execute(query, new { IDArticle, newTitle, newContent, newAutor });
             return result;
         }
         public int DeleteArticleIfNotExit(int IDArticle)
