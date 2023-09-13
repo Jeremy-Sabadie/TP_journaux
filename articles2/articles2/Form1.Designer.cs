@@ -138,6 +138,7 @@
             this.DGVarticles.Location = new System.Drawing.Point(3, 3);
             this.DGVarticles.Name = "DGVarticles";
             this.DGVarticles.RowTemplate.Height = 25;
+            this.DGVarticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVarticles.Size = new System.Drawing.Size(780, 150);
             this.DGVarticles.TabIndex = 0;
             // 
@@ -210,6 +211,7 @@
             this.BTdeleteArticle.TabIndex = 3;
             this.BTdeleteArticle.Text = "Supprimer l\'aticle";
             this.BTdeleteArticle.UseVisualStyleBackColor = true;
+            this.BTdeleteArticle.Click += new System.EventHandler(this.BTdeleteArticle_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -372,6 +374,7 @@
             this.BTreadNewspappers.TabIndex = 1;
             this.BTreadNewspappers.Text = "Voir les journaux";
             this.BTreadNewspappers.UseVisualStyleBackColor = true;
+            this.BTreadNewspappers.Click += new System.EventHandler(this.BTreadNewspappers_Click);
             // 
             // BTupdateNewspapper
             // 
@@ -382,6 +385,7 @@
             this.BTupdateNewspapper.TabIndex = 2;
             this.BTupdateNewspapper.Text = "Mettre à jour";
             this.BTupdateNewspapper.UseVisualStyleBackColor = true;
+            this.BTupdateNewspapper.Click += new System.EventHandler(this.BTupdateNewspapper_Click);
             // 
             // BTdeleteNewspapper
             // 

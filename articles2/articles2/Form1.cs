@@ -69,6 +69,7 @@ namespace articles2
         private void BTcreateArticle_Click(object sender, EventArgs e)
         {
             _DBCall.InsertArticle(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
+            BTreadArticle.PerformClick();
         }
 
         private void DGVcomposArticles_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -88,6 +89,7 @@ namespace articles2
             foreach (Article a in articles)
             {
                 _lstArticles.Add(a);
+
             }
         }
 
@@ -105,6 +107,32 @@ namespace articles2
             }
 
 
+        }
+
+        private void BTdeleteArticle_Click(object sender, EventArgs e)
+        {
+            Article current = BSArticle.Current as Article;
+            if (current is not null)
+                _DBCall.DeleteArticle(current.IDArticle);
+            BTreadArticle.PerformClick();
+        }
+
+        private void BTupdateNewspapper_Click(object sender, EventArgs e)
+        {
+            var current = BSJounal.Current as Newspapper;
+            _DBCall.UpdateNewspapper(current.IDJournal, current.Titre, current.DtParution);
+        }
+
+        private void BTreadNewspappers_Click(object sender, EventArgs e)
+        {
+
+            var news = _DBCall.GetAllNewspappers();
+            _lstNewspappers.Clear();
+            foreach (Newspapper n in news)
+            {
+                _lstNewspappers.Add(n);
+                BTreadNewspappers.PerformClick();
+            }
         }
     }
 }

@@ -42,14 +42,20 @@ namespace articles2
             int result = DBRequest.Execute(query, new { IDArticle, newTitle, newContent, newAutor });
             return result;
         }
-        public int DeleteArticleIfNotExit(int IDArticle)
+        public void DeleteArticle(int IDArticle)
         {
             try
             {
+                string inJournalQuery = "select * from journal JOIN composition on composition.IDJournal = journal.IDJournal JOIN article ON composition.IDArticle= article.IDArticle WHERE article.IDArticle = @IDArticle;";
                 DBRequest.Open();
-                string isInQuery = "delete from article join composition on IDArticle = IDArticle join journal on IDJournal = IDJounal  where IDArticle = @IDArticle";
-                int result = DBRequest.Execute(isInQuery, new { IDArticle });
-                return result;
+
+                string deleteQuery = "delete from article  where IDArticle = @IDArticle;";
+                int isIn = DBRequest.Execute(inJournalQuery, new { IDArticle });
+                if (isIn > 0)
+                {
+                    int result = DBRequest.Execute(deleteQuery, new { IDArticle });
+
+                }
             }
             finally { DBRequest.Close(); }
         }
@@ -80,7 +86,7 @@ namespace articles2
         }
         public int UpdateNewspapper(int IDJournal, string titre, DateTime? dtParution)
         {
-            string query = "update journal set(Titre,DtParution) values(titre,dtParution;";
+            string query = "UPDATE journal SET Titre =@titre,DtParution = DtParution WHERE IDJournal = @IDJournal;";
             try
             {
                 int result = DBRequest.Execute(query, new { titre, dtParution });
