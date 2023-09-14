@@ -121,7 +121,6 @@ namespace articles2
         {
             var current = BSJounal.Current as Newspapper;
             _DBCall.UpdateNewspapper(current.IDJournal, current.Titre, current.DtParution);
-            BTreadNewspappers.PerformClick();
         }
 
         private void BTreadNewspappers_Click(object sender, EventArgs e)
@@ -151,7 +150,7 @@ namespace articles2
                 MessageBox.Show($"Le journal {current.Titre} n°{current.IDJournal} à bien été supprimmé.");
                 BTreadNewspappers.PerformClick();
             }
-            else if (_DBCall.DeleteNewspapper(current.IDJournal) <= 0)
+            else
             {
                 MessageBox.Show($"Erreur lors de la suppéssion du  journal: {current.Titre}.");
             }

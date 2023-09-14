@@ -96,7 +96,7 @@ namespace articles2
 
         public int DeleteNewspapper(int IDJournal)
         {
-            string deleteFromCompoQuery = "delete from composition join ON composition.IDJournal=journal.IDJournal where journal.IDJournal= @IDJournal;";
+            string deleteFromCompoQuery = "DELETE FROM composition INNER JOIN article ON composition.IDArticle = article.IDArticle INNER JOIN journal ON composition.IDJournal = journal.IDJournal WHERE journal.IDJournal = @IDJournal;";
 
             string deleteFromJournalQuery = "delete from journal where IDJournal = @IDJournal;";
             try
