@@ -121,6 +121,7 @@ namespace articles2
         {
             var current = BSJounal.Current as Newspapper;
             _DBCall.UpdateNewspapper(current.IDJournal, current.Titre, current.DtParution);
+            BTreadNewspappers.PerformClick();
         }
 
         private void BTreadNewspappers_Click(object sender, EventArgs e)
@@ -131,8 +132,30 @@ namespace articles2
             foreach (Newspapper n in news)
             {
                 _lstNewspappers.Add(n);
+
+            }
+        }
+
+        private void BTcreateNewspapper_Click(object sender, EventArgs e)
+        {
+            _DBCall.InsertNewspapper(TXTitreJournal.Text, DTParutionJournal.Value);
+            BTreadNewspappers.PerformClick();
+        }
+
+        private void BTdeleteNewspapper_Click(object sender, EventArgs e)
+        {
+            var current = BSJounal.Current as Newspapper;
+            _DBCall.DeleteNewspapper(current.IDJournal);
+            if (_DBCall.DeleteNewspapper(current.IDJournal) > 0)
+            {
+                MessageBox.Show($"Le journal {current.Titre} n°{current.IDJournal} à bien été supprimmé.");
                 BTreadNewspappers.PerformClick();
             }
+            else if (_DBCall.DeleteNewspapper(current.IDJournal) <= 0)
+            {
+                MessageBox.Show($"Erreur lors de la suppéssion du  journal: {current.Titre}.");
+            }
+            BTreadNewspappers.PerformClick();
         }
     }
 }

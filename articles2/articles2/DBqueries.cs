@@ -51,11 +51,10 @@ namespace articles2
 
                 string deleteQuery = "delete from article  where IDArticle = @IDArticle;";
                 int isIn = DBRequest.Execute(inJournalQuery, new { IDArticle });
-                if (isIn > 0)
-                {
-                    int result = DBRequest.Execute(deleteQuery, new { IDArticle });
 
-                }
+                int deleteExecute = DBRequest.Execute(deleteQuery, new { IDArticle });
+
+
             }
             finally { DBRequest.Close(); }
         }
@@ -89,7 +88,7 @@ namespace articles2
             string query = "UPDATE journal SET Titre =@titre,DtParution = DtParution WHERE IDJournal = @IDJournal;";
             try
             {
-                int result = DBRequest.Execute(query, new { titre, dtParution });
+                int result = DBRequest.Execute(query, new { IDJournal, titre, dtParution });
                 return result;
             }
             finally { DBRequest.Close(); }
@@ -97,13 +96,40 @@ namespace articles2
 
         public int DeleteNewspapper(int IDJournal)
         {
-            string query = "delete from journal where IDJournal = @IDJournal;";
+            string deleteFromCompoQuery = "delete from composition join ON composition.IDJournal=journal.IDJournal where journal.IDJournal= @IDJournal;";
+
+            string deleteFromJournalQuery = "delete from journal where IDJournal = @IDJournal;";
             try
             {
-                int result = DBRequest.Execute(query, new { IDJournal });
-                return result;
+                DBRequest.Open();
+
+
+                var dialogResult = MessageBox.Show($"Voulez-vous supprimmer le journal: {IDJournal}?", "System message", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Pas de suppression.");
+                    return 0;
+                }
+                else if (dialogResult == DialogResult.Yes)
+                {
+                    var transact = DBRequest.BeginTransaction();
+                    var compoResult = DBRequest.Execute(deleteFromCompoQuery, new { IDJournal });
+
+                    int journalDeleted = DBRequest.Execute(deleteFromJournalQuery, new { IDJournal });
+                    transact.Commit();
+                    return journalDeleted;
+
+                }
             }
             finally { DBRequest.Close(); }
+            return -1;
+
+
+
+
+
+
+
         }
         #endregion
 

@@ -61,8 +61,8 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.LBtitre = new System.Windows.Forms.Label();
             this.LBdate = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.TXTitreJournal = new System.Windows.Forms.TextBox();
+            this.DTParutionJournal = new System.Windows.Forms.DateTimePicker();
             this.compositions = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.DGVcomposArticles = new System.Windows.Forms.DataGridView();
@@ -325,6 +325,7 @@
             this.DGVNewspappers.Location = new System.Drawing.Point(3, 3);
             this.DGVNewspappers.Name = "DGVNewspappers";
             this.DGVNewspappers.RowTemplate.Height = 25;
+            this.DGVNewspappers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVNewspappers.Size = new System.Drawing.Size(780, 180);
             this.DGVNewspappers.TabIndex = 0;
             // 
@@ -364,6 +365,7 @@
             this.BTcreateNewspapper.TabIndex = 0;
             this.BTcreateNewspapper.Text = "Créer";
             this.BTcreateNewspapper.UseVisualStyleBackColor = true;
+            this.BTcreateNewspapper.Click += new System.EventHandler(this.BTcreateNewspapper_Click);
             // 
             // BTreadNewspappers
             // 
@@ -396,6 +398,7 @@
             this.BTdeleteNewspapper.TabIndex = 3;
             this.BTdeleteNewspapper.Text = "Supprimer";
             this.BTdeleteNewspapper.UseVisualStyleBackColor = true;
+            this.BTdeleteNewspapper.Click += new System.EventHandler(this.BTdeleteNewspapper_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -404,8 +407,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.33517F));
             this.tableLayoutPanel3.Controls.Add(this.LBtitre, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.LBdate, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.dateTimePicker1, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.TXTitreJournal, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.DTParutionJournal, 1, 1);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
@@ -437,21 +440,21 @@
             this.LBdate.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.LBdate.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox1
+            // TXTitreJournal
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(153, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(506, 23);
-            this.textBox1.TabIndex = 3;
+            this.TXTitreJournal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TXTitreJournal.Location = new System.Drawing.Point(153, 3);
+            this.TXTitreJournal.Name = "TXTitreJournal";
+            this.TXTitreJournal.Size = new System.Drawing.Size(506, 23);
+            this.TXTitreJournal.TabIndex = 3;
             // 
-            // dateTimePicker1
+            // DTParutionJournal
             // 
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Location = new System.Drawing.Point(153, 53);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(506, 23);
-            this.dateTimePicker1.TabIndex = 4;
+            this.DTParutionJournal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DTParutionJournal.Location = new System.Drawing.Point(153, 53);
+            this.DTParutionJournal.Name = "DTParutionJournal";
+            this.DTParutionJournal.Size = new System.Drawing.Size(506, 23);
+            this.DTParutionJournal.TabIndex = 4;
             // 
             // compositions
             // 
@@ -585,9 +588,9 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Label LBtitre;
         private Label LBdate;
-        private TextBox textBox1;
+        private TextBox TXTitreJournal;
         private TabPage compositions;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker DTParutionJournal;
         private TableLayoutPanel TLPNewspaperInputs;
         private FlowLayoutPanel FLPNewspappersBTN;
         private Button BTcreateArticle;
