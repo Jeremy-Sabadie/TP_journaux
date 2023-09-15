@@ -58,6 +58,36 @@ namespace articles2
             }
             finally { DBRequest.Close(); }
         }
+
+        #endregion
+        #region composition
+        public IEnumerable<Article> IsInJournal(int IDJournal)
+        {
+            try
+            {
+                DBRequest.Open();
+                string Query = @"select* from article  JOIN composition ON article.IDArticle=composition.IDArticle
+                JOIN journal ON composition.IDJournal = journal.IDJournal
+               WHERE journal.IDJournal = @IDJournal;";
+                IEnumerable<Article> articlesIsIn = DBRequest.Query<Article>(Query, new { IDJournal });
+                return articlesIsIn;
+            }
+            finally { DBRequest.Close(); }
+        }
+        public IEnumerable<Article> ArticlesNotIn(int IDArticle, int IDJournal)
+        {
+            try
+            {
+                DBRequest.Open();
+                string query = @" SELECT * FROM article JOIN composition ON article.IDArticle = composition.IDArticle JOIN journal ON composition.IDJournal = journal.IDJournal WHERE IDJournal NOT IN(SELECT * FROM journal JOIN composition ON journal.IDJournal = composition.IDJournal JOIN article ON composition.IDArticle = article.IDArticle WHERE IDJournal = IDJournal;) AND IDJournal = @IDJournal;";
+                IEnumerable<Article> notIn = DBRequest.Query<Article>(query, new { IDJournal });
+                return notIn;
+            }
+            finally
+            {
+                DBRequest.Close();
+            }
+        }
         #endregion
         #region Newspapper functions
         public IEnumerable<Newspapper> GetAllNewspappers()
@@ -134,4 +164,5 @@ namespace articles2
         #endregion
 
     }
+    //"SELECT * FROM journal JOIN composition ON journal.IDJournal = composition.IDJournal JOIN article ON composition.IDArticle = article.IDArticle WHERE IDJournal = @IDJournal;"
 }
