@@ -8,6 +8,9 @@ namespace articles2
         BindingList<Article> _lstArticles;
         BindingList<Newspapper> _lstNewspappers;
         BindingList<Composition> _lstCompos;
+        BindingList<Article> _lstComposIsIn;
+        BindingList<Article> _lstComposNotIn;
+        BindingList<Newspapper> _lstComposJournal;
         public Form1()
         {
 
@@ -20,15 +23,22 @@ namespace articles2
             _lstArticles = new();
             _lstNewspappers = new();
             _lstCompos = new();
+            _lstComposIsIn = new();
+            _lstComposNotIn = new();
+            _lstComposJournal = new();
+
             //Connection of the BindingSource whith the correspond list created:
             BSArticle.DataSource = _lstArticles;
             BSJounal.DataSource = _lstNewspappers;
             BSComps.DataSource = _lstCompos;
             DGVarticles.DataSource = BSArticle;
             DGVNewspappers.DataSource = BSJounal;
-            DGVcomposArticles.DataSource = BSComps;
-            DGVcomposNewspappers.DataSource = BSJounal;
-            DGVcomposArticles.DataSource = BSArticle;
+            DGVnotIn.DataSource = BSComps;
+            DGVisIn.DataSource = BSJounal;
+            DGVnotIn.DataSource = BSArticle;
+            DGVcomposJournaux.DataSource = BScomposJournaux;
+            DGVisIn.DataSource = BScomposIsIn;
+            DGVnotIn.DataSource = BScomposNotIn;
             //Connection of the diffrent textbox:
             TXTtitre.DataBindings.Add("Text", BSArticle, "Titre", false, DataSourceUpdateMode.Never);
             TXTcorps.DataBindings.Add("Text", BSArticle, "Corps", false, DataSourceUpdateMode.Never);
@@ -155,6 +165,11 @@ namespace articles2
                 MessageBox.Show($"Erreur lors de la suppéssion du  journal: {current.Titre}.");
             }
             BTreadNewspappers.PerformClick();
+        }
+
+        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

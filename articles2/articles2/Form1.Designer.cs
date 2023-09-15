@@ -65,11 +65,19 @@
             this.DTParutionJournal = new System.Windows.Forms.DateTimePicker();
             this.compositions = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.DGVcomposArticles = new System.Windows.Forms.DataGridView();
-            this.DGVcomposNewspappers = new System.Windows.Forms.DataGridView();
-            this.LBcomposNewspapper = new System.Windows.Forms.Label();
-            this.LBcomposArticles = new System.Windows.Forms.Label();
+            this.DGVisIn = new System.Windows.Forms.DataGridView();
+            this.DGVnotIn = new System.Windows.Forms.DataGridView();
+            this.LBinclu = new System.Windows.Forms.Label();
+            this.LBexclus = new System.Windows.Forms.Label();
+            this.BTinclure = new System.Windows.Forms.Button();
+            this.BTexcure = new System.Windows.Forms.Button();
+            this.BTactualiserCompos = new System.Windows.Forms.Button();
+            this.DGVcomposJournaux = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            this.BScomposIsIn = new System.Windows.Forms.BindingSource(this.components);
+            this.BScomposNotIn = new System.Windows.Forms.BindingSource(this.components);
+            this.BScomposJournaux = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BSArticle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSJounal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSComps)).BeginInit();
@@ -88,8 +96,12 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.compositions.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVcomposArticles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVcomposNewspappers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVisIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVnotIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVcomposJournaux)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BScomposIsIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BScomposNotIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BScomposJournaux)).BeginInit();
             this.SuspendLayout();
             // 
             // TCobjedts
@@ -470,60 +482,120 @@
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 684F));
-            this.tableLayoutPanel5.Controls.Add(this.DGVcomposArticles, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.DGVcomposNewspappers, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.LBcomposNewspapper, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.LBcomposArticles, 0, 1);
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 616F));
+            this.tableLayoutPanel5.Controls.Add(this.DGVisIn, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.DGVnotIn, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.LBinclu, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.LBexclus, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.BTinclure, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.BTexcure, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.BTactualiserCompos, 0, 5);
+            this.tableLayoutPanel5.Controls.Add(this.DGVcomposJournaux, 1, 5);
+            this.tableLayoutPanel5.Controls.Add(this.label1, 1, 4);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowCount = 7;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.93617F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.06383F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(792, 427);
             this.tableLayoutPanel5.TabIndex = 0;
+            this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel5_Paint);
             // 
-            // DGVcomposArticles
+            // DGVisIn
             // 
-            this.DGVcomposArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVcomposArticles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVcomposArticles.Location = new System.Drawing.Point(111, 216);
-            this.DGVcomposArticles.Name = "DGVcomposArticles";
-            this.DGVcomposArticles.RowTemplate.Height = 25;
-            this.DGVcomposArticles.Size = new System.Drawing.Size(678, 208);
-            this.DGVcomposArticles.TabIndex = 1;
-            this.DGVcomposArticles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVcomposArticles_CellContentClick);
+            this.DGVisIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVisIn.Location = new System.Drawing.Point(179, 37);
+            this.DGVisIn.Name = "DGVisIn";
+            this.DGVisIn.RowTemplate.Height = 25;
+            this.DGVisIn.Size = new System.Drawing.Size(610, 104);
+            this.DGVisIn.TabIndex = 0;
+            this.DGVisIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // DGVcomposNewspappers
+            // DGVnotIn
             // 
-            this.DGVcomposNewspappers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVcomposNewspappers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVcomposNewspappers.Location = new System.Drawing.Point(111, 3);
-            this.DGVcomposNewspappers.Name = "DGVcomposNewspappers";
-            this.DGVcomposNewspappers.RowTemplate.Height = 25;
-            this.DGVcomposNewspappers.Size = new System.Drawing.Size(678, 207);
-            this.DGVcomposNewspappers.TabIndex = 0;
-            this.DGVcomposNewspappers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.DGVnotIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVnotIn.Location = new System.Drawing.Point(179, 182);
+            this.DGVnotIn.Name = "DGVnotIn";
+            this.DGVnotIn.RowTemplate.Height = 25;
+            this.DGVnotIn.Size = new System.Drawing.Size(610, 114);
+            this.DGVnotIn.TabIndex = 1;
+            this.DGVnotIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVcomposArticles_CellContentClick);
             // 
-            // LBcomposNewspapper
+            // LBinclu
             // 
-            this.LBcomposNewspapper.AutoSize = true;
-            this.LBcomposNewspapper.Location = new System.Drawing.Point(3, 0);
-            this.LBcomposNewspapper.Name = "LBcomposNewspapper";
-            this.LBcomposNewspapper.Size = new System.Drawing.Size(58, 15);
-            this.LBcomposNewspapper.TabIndex = 2;
-            this.LBcomposNewspapper.Text = "Journaux:";
-            this.LBcomposNewspapper.Click += new System.EventHandler(this.label1_Click);
+            this.LBinclu.AutoSize = true;
+            this.LBinclu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LBinclu.Location = new System.Drawing.Point(179, 0);
+            this.LBinclu.Name = "LBinclu";
+            this.LBinclu.Size = new System.Drawing.Size(610, 34);
+            this.LBinclu.TabIndex = 5;
+            this.LBinclu.Text = "Inclus:";
             // 
-            // LBcomposArticles
+            // LBexclus
             // 
-            this.LBcomposArticles.AutoSize = true;
-            this.LBcomposArticles.Location = new System.Drawing.Point(3, 213);
-            this.LBcomposArticles.Name = "LBcomposArticles";
-            this.LBcomposArticles.Size = new System.Drawing.Size(67, 15);
-            this.LBcomposArticles.TabIndex = 3;
-            this.LBcomposArticles.Text = "Ses articles:";
+            this.LBexclus.AutoSize = true;
+            this.LBexclus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LBexclus.Location = new System.Drawing.Point(179, 144);
+            this.LBexclus.Name = "LBexclus";
+            this.LBexclus.Size = new System.Drawing.Size(610, 35);
+            this.LBexclus.TabIndex = 6;
+            this.LBexclus.Text = "Exclus:";
+            // 
+            // BTinclure
+            // 
+            this.BTinclure.Location = new System.Drawing.Point(43, 212);
+            this.BTinclure.Margin = new System.Windows.Forms.Padding(43, 33, 3, 3);
+            this.BTinclure.Name = "BTinclure";
+            this.BTinclure.Size = new System.Drawing.Size(83, 41);
+            this.BTinclure.TabIndex = 3;
+            this.BTinclure.Text = "Inclure";
+            this.BTinclure.UseVisualStyleBackColor = true;
+            // 
+            // BTexcure
+            // 
+            this.BTexcure.Location = new System.Drawing.Point(43, 67);
+            this.BTexcure.Margin = new System.Windows.Forms.Padding(43, 33, 3, 3);
+            this.BTexcure.Name = "BTexcure";
+            this.BTexcure.Size = new System.Drawing.Size(83, 39);
+            this.BTexcure.TabIndex = 2;
+            this.BTexcure.Text = "Exclure";
+            this.BTexcure.UseVisualStyleBackColor = true;
+            // 
+            // BTactualiserCompos
+            // 
+            this.BTactualiserCompos.Location = new System.Drawing.Point(43, 329);
+            this.BTactualiserCompos.Margin = new System.Windows.Forms.Padding(43, 3, 3, 3);
+            this.BTactualiserCompos.Name = "BTactualiserCompos";
+            this.BTactualiserCompos.Size = new System.Drawing.Size(83, 58);
+            this.BTactualiserCompos.TabIndex = 4;
+            this.BTactualiserCompos.Text = "Actualiser";
+            this.BTactualiserCompos.UseVisualStyleBackColor = true;
+            // 
+            // DGVcomposJournaux
+            // 
+            this.DGVcomposJournaux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVcomposJournaux.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVcomposJournaux.Location = new System.Drawing.Point(179, 329);
+            this.DGVcomposJournaux.Name = "DGVcomposJournaux";
+            this.DGVcomposJournaux.RowTemplate.Height = 25;
+            this.DGVcomposJournaux.Size = new System.Drawing.Size(610, 86);
+            this.DGVcomposJournaux.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(179, 299);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(610, 27);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Journaux:";
             // 
             // mySqlCommand1
             // 
@@ -562,8 +634,12 @@
             this.compositions.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVcomposArticles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVcomposNewspappers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVisIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVnotIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVcomposJournaux)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BScomposIsIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BScomposNotIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BScomposJournaux)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -604,11 +680,19 @@
         private TextBox TXTcorps;
         private TextBox TXTauteur;
         private TableLayoutPanel tableLayoutPanel5;
-        private DataGridView DGVcomposArticles;
-        private DataGridView DGVcomposNewspappers;
-        private Label LBcomposNewspapper;
-        private Label LBcomposArticles;
+        private DataGridView DGVnotIn;
+        private DataGridView DGVisIn;
         private Label LBtitreArticle;
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
+        private Button BTexcure;
+        private Button BTinclure;
+        private Button BTactualiserCompos;
+        private Label LBinclu;
+        private Label LBexclus;
+        private DataGridView DGVcomposJournaux;
+        private Label label1;
+        private BindingSource BScomposIsIn;
+        private BindingSource BScomposNotIn;
+        private BindingSource BScomposJournaux;
     }
 }
