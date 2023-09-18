@@ -31,6 +31,8 @@ namespace articles2
             BSArticle.DataSource = _lstArticles;
             BSJounal.DataSource = _lstNewspappers;
             BSComps.DataSource = _lstCompos;
+            BScomposIsIn.DataSource = _lstComposIsIn;
+            BScomposNotIn.DataSource = _lstComposNotIn;
             DGVarticles.DataSource = BSArticle;
             DGVNewspappers.DataSource = BSJounal;
             DGVnotIn.DataSource = BSComps;
@@ -43,6 +45,7 @@ namespace articles2
             TXTtitre.DataBindings.Add("Text", BSArticle, "Titre", false, DataSourceUpdateMode.Never);
             TXTcorps.DataBindings.Add("Text", BSArticle, "Corps", false, DataSourceUpdateMode.Never);
             TXTauteur.DataBindings.Add("Text", BSArticle, "Auteur", false, DataSourceUpdateMode.Never);
+
 
         }
 

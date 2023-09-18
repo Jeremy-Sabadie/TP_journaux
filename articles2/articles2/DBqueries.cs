@@ -87,6 +87,7 @@ namespace articles2
             {
                 DBRequest.Close();
             }
+            //delete article from composition
         }
         #endregion
         #region Newspapper functions
