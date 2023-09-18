@@ -41,7 +41,7 @@ namespace articles2
             Task<int> result = DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
             return result;
         }
-        public void DeleteArticle(int IDArticle)
+        public Task<int> DeleteArticle(int IDArticle)
         {
             try
             {
@@ -49,9 +49,10 @@ namespace articles2
                 DBRequest.Open();
 
                 string deleteQuery = "delete from article  where IDArticle = @IDArticle;";
-                int isIn = DBRequest.Execute(inJournalQuery, new { IDArticle });
+                Task<int> isIn = DBRequest.ExecuteAsync(inJournalQuery, new { IDArticle });
 
                 int deleteExecute = DBRequest.Execute(deleteQuery, new { IDArticle });
+                return isIn;
 
 
             }
