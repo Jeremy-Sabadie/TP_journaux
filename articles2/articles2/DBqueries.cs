@@ -20,13 +20,13 @@ namespace articles2
         }
 
 
-        public int InsertArticle(string titre, string corps, string auteur)
+        public Task<int> InsertArticle(string titre, string corps, string auteur)
         {
             string query = "Insert into article (Titre, Corps,auteur) values(@titre,@corps,@auteur)";
             try
             {
                 DBRequest.Open();
-                int result = DBRequest.Execute(query, new { titre, corps, auteur });
+                Task<int> result = DBRequest.ExecuteAsync(query, new { titre, corps, auteur });
                 return result;
             }
             finally
