@@ -34,12 +34,11 @@ namespace articles2
                 DBRequest.Close();
             }
         }
-        public int UpdateArticle(int IDArticle, string newTitle, string newContent, string newAutor)
+        public Task<int> UpdateArticle(int IDArticle, string newTitle, string newContent, string newAutor)
         {
             string query = "UPDATE article                SET Titre = @NewTitle, Corps=@NewContent, Auteur=@newAutor WHERE  IDArticle = @IDArticle";
-
-
-            int result = DBRequest.Execute(query, new { IDArticle, newTitle, newContent, newAutor });
+            DBRequest.Open();
+            Task<int> result = DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
             return result;
         }
         public void DeleteArticle(int IDArticle)
