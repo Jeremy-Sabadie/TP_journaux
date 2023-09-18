@@ -1,0 +1,7 @@
+C:\Users\cda07saba\Desktop\TP_journaux\asynchrone1\asynchrone1\obj\Debug\net6.0-windows\asynchrone1.csproj.AssemblyReference.cache
+C:\Users\cda07saba\Desktop\TP_journaux\asynchrone1\asynchrone1\obj\Debug\net6.0-windows\asynchrone1.Form1.resources
+C:\Users\cda07saba\Desktop\TP_journaux\asynchrone1\asynchrone1\obj\Debug\net6.0-windows\asynchrone1.csproj.GenerateResource.cache
+C:\Users\cda07saba\Desktop\TP_journaux\asynchrone1\asynchrone1\obj\Debug\net6.0-windows\asynchrone1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cda07saba\Desktop\TP_journaux\asynchrone1\asynchrone1\obj\Debug\net6.0-windows\asynchrone1.AssemblyInfoInputs.cache
+C:\Users\cda07saba\Desktop\TP_journaux\asynchrone1\asynchrone1\obj\Debug\net6.0-windows\asynchrone1.AssemblyInfo.cs
+C:\Users\cda07saba\Desktop\TP_journaux\asynchrone1\asynchrone1\obj\Debug\net6.0-windows\asynchrone1.csproj.CoreCompileInputs.cache

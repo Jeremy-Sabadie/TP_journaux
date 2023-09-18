@@ -7,13 +7,13 @@ namespace articles2
     {
         MySqlConnection DBRequest = new("Server = lab005.2isa.org; Port=33005;Database=Edito;UID=root;PWD=1365lab005");
         #region Article functions
-        public IEnumerable<Article> GetAllArticles()
+        public Task<IEnumerable<Article>> GetAllArticles()
         {
             string query = "select* from article;";
             try
             {
                 DBRequest.Open();
-                var result = DBRequest.Query<Article>(query);
+                var result = DBRequest.QueryAsync<Article>(query);
                 return result;
             }
             finally { DBRequest.Close(); }

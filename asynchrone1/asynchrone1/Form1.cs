@@ -7,9 +7,6 @@ namespace asynchrone1
             InitializeComponent();
         }
 
-        private void BTasynchronCall_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

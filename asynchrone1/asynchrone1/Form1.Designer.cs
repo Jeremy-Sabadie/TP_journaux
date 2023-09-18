@@ -31,8 +31,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.BTasynchronCall = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -64,31 +62,10 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.BTasynchronCall);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 228);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(767, 210);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // BTasynchronCall
-            // 
-            this.BTasynchronCall.Location = new System.Drawing.Point(3, 3);
-            this.BTasynchronCall.Name = "BTasynchronCall";
-            this.BTasynchronCall.Size = new System.Drawing.Size(75, 23);
-            this.BTasynchronCall.TabIndex = 0;
-            this.BTasynchronCall.Text = "Asynchrone";
-            this.BTasynchronCall.UseVisualStyleBackColor = true;
-            this.BTasynchronCall.Click += new System.EventHandler(this.BTasynchronCall_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(84, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -109,7 +86,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private ListBox listBox1;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button BTasynchronCall;
-        private Button button2;
+
     }
 }
