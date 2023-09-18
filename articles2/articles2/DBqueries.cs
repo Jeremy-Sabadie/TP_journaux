@@ -7,39 +7,39 @@ namespace articles2
     {
         MySqlConnection DBRequest = new("Server = lab005.2isa.org; Port=33005;Database=Edito;UID=root;PWD=1365lab005");
         #region Article functions
-        public Task<IEnumerable<Article>> GetAllArticles()
+        public async Task<IEnumerable<Article>> GetAllArticlesAsync()
         {
             string query = "select* from article;";
             try
             {
-                DBRequest.Open();
-                var result = DBRequest.QueryAsync<Article>(query);
+                await DBRequest.OpenAsync();
+                var result = await DBRequest.QueryAsync<Article>(query);
                 return result;
             }
-            finally { DBRequest.Close(); }
+            finally { await DBRequest.CloseAsync(); }
         }
 
 
-        public Task<int> InsertArticle(string titre, string corps, string auteur)
+        public async Task<int> InsertArticleAsync(string titre, string corps, string auteur)
         {
             string query = "Insert into article (Titre, Corps,auteur) values(@titre,@corps,@auteur)";
             try
             {
-                DBRequest.Open();
+                await DBRequest.OpenAsync();
                 Task<int> result = DBRequest.ExecuteAsync(query, new { titre, corps, auteur });
-                return result;
+                return result.Result;
             }
             finally
             {
-                DBRequest.Close();
+                await DBRequest.CloseAsync();
             }
         }
-        public Task<int> UpdateArticle(int IDArticle, string newTitle, string newContent, string newAutor)
+        public async Task<int> UpdateArticleAsync(int IDArticle, string newTitle, string newContent, string newAutor)
         {
             string query = "UPDATE article                SET Titre = @NewTitle, Corps=@NewContent, Auteur=@newAutor WHERE  IDArticle = @IDArticle";
-            DBRequest.Open();
+            await DBRequest.OpenAsync();
             Task<int> result = DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
-            return result;
+            return result.Result;
         }
         public Task<int> DeleteArticle(int IDArticle)
         {

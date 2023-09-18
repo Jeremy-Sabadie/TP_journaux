@@ -56,7 +56,7 @@ namespace articles2
 
         private void BTCreate_Click(object sender, EventArgs e)
         {
-            _DBCall.InsertArticle(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
+            _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
         }
 
         private void FLPContainerBTN_Paint(object sender, PaintEventArgs e)
@@ -81,7 +81,7 @@ namespace articles2
 
         private void BTcreateArticle_Click(object sender, EventArgs e)
         {
-            _DBCall.InsertArticle(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
+            _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
             BTreadArticle.PerformClick();
         }
 
@@ -95,9 +95,9 @@ namespace articles2
 
         }
 
-        private void BTreadArticle_Click(object sender, EventArgs e)
+        private async void BTreadArticle_Click(object sender, EventArgs e)
         {
-            var articles = _DBCall.GetAllArticles();
+            var articles = await _DBCall.GetAllArticlesAsync();
             _lstArticles.Clear();
             foreach (Article a in articles)
             {
@@ -111,8 +111,8 @@ namespace articles2
             Article current = BSArticle.Current as Article;
             if (current is not null)
             {
-                int updated = _DBCall.UpdateArticle(current.IDArticle, TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
-                if (updated > 0)
+                Task<int> updated = _DBCall.UpdateArticleAsync(current.IDArticle, TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
+                if (updated.Result > 0)
                 {
                     MessageBox.Show($"L'aticle n° {current.IDArticle} {current.Titre} de: {current.Auteur} à bien été mis à jour avec le titre: {TXTtitre.Text} et auteur: {TXTauteur.Text}.");
 
