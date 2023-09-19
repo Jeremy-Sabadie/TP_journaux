@@ -133,7 +133,7 @@ namespace articles2
         private void BTupdateNewspapper_Click(object sender, EventArgs e)
         {
             var current = BSJounal.Current as Newspapper;
-            _DBCall.UpdateNewspapper(current.IDJournal, current.Titre, current.DtParution);
+            _DBCall.UpdateNewspapperAsync(current.IDJournal, current.Titre, current.DtParution);
         }
 
         private void BTreadNewspappers_Click(object sender, EventArgs e)
@@ -141,7 +141,7 @@ namespace articles2
 
             var news = _DBCall.GetAllNewspappersAsync();
             _lstNewspappers.Clear();
-            foreach (Newspapper n in news)
+            foreach (Newspapper n in news.Result)
             {
                 _lstNewspappers.Add(n);
 
@@ -150,7 +150,7 @@ namespace articles2
 
         private void BTcreateNewspapper_Click(object sender, EventArgs e)
         {
-            _DBCall.InsertNewspapper(TXTitreJournal.Text, DTParutionJournal.Value);
+            _DBCall.InsertNewspapperAsync(TXTitreJournal.Text, DTParutionJournal.Value);
             BTreadNewspappers.PerformClick();
         }
 

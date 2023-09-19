@@ -104,7 +104,7 @@ namespace articles2
             }
             finally { await DBRequest.CloseAsync(); }
         }
-        public int InsertNewspapper(string title, DateTime? dtParution)
+        public int InsertNewspapperAsync(string title, DateTime? dtParution)
         {
             string query = "insert into journal(Titre,DtParution) values(@title,@dtParution)";
             try
@@ -114,15 +114,16 @@ namespace articles2
             }
             finally { DBRequest.Close(); }
         }
-        public int UpdateNewspapper(int IDJournal, string titre, DateTime? dtParution)
+        public async Task<int> UpdateNewspapperAsync(int IDJournal, string titre, DateTime? dtParution)
         {
             string query = "UPDATE journal SET Titre =@titre,DtParution = DtParution WHERE IDJournal = @IDJournal;";
             try
             {
-                int result = DBRequest.Execute(query, new { IDJournal, titre, dtParution });
-                return result;
+                await DBRequest.OpenAsync();
+                Task<int> result = DBRequest.ExecuteAsync(query, new { IDJournal, titre, dtParution });
+                return result.Result;
             }
-            finally { DBRequest.Close(); }
+            finally { await DBRequest.CloseAsync(); }
         }
 
         public int DeleteNewspapper(int IDJournal)
