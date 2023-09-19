@@ -37,6 +37,7 @@ namespace articles2
         public async Task<int> UpdateArticleAsync(int IDArticle, string newTitle, string newContent, string newAutor)
         {
             string query = "UPDATE article                SET Titre = @NewTitle, Corps=@NewContent, Auteur=@newAutor WHERE  IDArticle = @IDArticle";
+
             await DBRequest.OpenAsync();
             Task<int> result = DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
             return result.Result;
@@ -51,7 +52,7 @@ namespace articles2
                 string deleteQuery = "delete from article  where IDArticle = @IDArticle;";
                 Task<int> isIn = DBRequest.ExecuteAsync(inJournalQuery, new { IDArticle });
 
-                int deleteExecute = DBRequest.Execute(deleteQuery, new { IDArticle });
+                Task<int> deleteExecute = DBRequest.ExecuteAsync(deleteQuery, new { IDArticle });
                 return isIn.Result;
 
 
@@ -91,18 +92,17 @@ namespace articles2
         }
         #endregion
         #region Newspapper functions
-        public IEnumerable<Newspapper> GetAllNewspappers()
+        public async Task<IEnumerable<Newspapper>> GetAllNewspappersAsync()
         {
             string query = "select* from journal;";
             try
             {
-                DBRequest.Open();
-                var newspappers = DBRequest.Query<Newspapper>(query);
+                await DBRequest.OpenAsync();
+                Task<IEnumerable<Newspapper>> newspappers = DBRequest.QueryAsync<Newspapper>(query);
 
-
-                return newspappers;
+                return newspappers.Result;
             }
-            finally { DBRequest.Close(); }
+            finally { await DBRequest.CloseAsync(); }
         }
         public int InsertNewspapper(string title, DateTime? dtParution)
         {

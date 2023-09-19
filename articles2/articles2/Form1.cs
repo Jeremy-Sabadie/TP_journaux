@@ -139,7 +139,7 @@ namespace articles2
         private void BTreadNewspappers_Click(object sender, EventArgs e)
         {
 
-            var news = _DBCall.GetAllNewspappers();
+            var news = _DBCall.GetAllNewspappersAsync();
             _lstNewspappers.Clear();
             foreach (Newspapper n in news)
             {
