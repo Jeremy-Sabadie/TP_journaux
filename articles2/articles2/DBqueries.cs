@@ -5,14 +5,25 @@ namespace articles2
 {
     internal class DBqueries
     {
+
+        object _verrou = new object();
         MySqlConnection DBRequest = new("Server = lab005.2isa.org; Port=33005;Database=Edito;UID=root;PWD=1365lab005");
         #region Article functions
         public async Task<IEnumerable<Article>> GetAllArticlesAsync()
         {
             string query = "select* from article;";
+            DBRequest.Close();
             try
             {
                 await DBRequest.OpenAsync();
+                lock (_verrou)
+                {
+                    // L'objet `verrou` is locked,its brace block is blocked.
+                    Thread.Sleep(1000);
+                }
+                // Task.Delay() Unlike the sleep() function, it allows the window to be moved, but still waits for a given delay.
+                await Task.Delay(5000);
+
                 var result = await DBRequest.QueryAsync<Article>(query);
                 return result;
             }
@@ -25,9 +36,10 @@ namespace articles2
             string query = "Insert into article (Titre, Corps,auteur) values(@titre,@corps,@auteur)";
             try
             {
-                await DBRequest.OpenAsync();
-                Task<int> result = DBRequest.ExecuteAsync(query, new { titre, corps, auteur });
-                return result.Result;
+
+                DBRequest.Open();
+                var result = await DBRequest.ExecuteAsync(query, new { titre, corps, auteur });
+                return result;
             }
             finally
             {
@@ -104,15 +116,15 @@ namespace articles2
             }
             finally { await DBRequest.CloseAsync(); }
         }
-        public int InsertNewspapperAsync(string title, DateTime? dtParution)
+        public async Task<int> InsertNewspapperAsync(string title, DateTime? dtParution)
         {
             string query = "insert into journal(Titre,DtParution) values(@title,@dtParution)";
             try
             {
-                int result = DBRequest.Execute(query, new { title, dtParution });
-                return result;
+                Task<int> result = DBRequest.ExecuteAsync(query, new { title, dtParution });
+                return result.Result;
             }
-            finally { DBRequest.Close(); }
+            finally { await DBRequest.CloseAsync(); }
         }
         public async Task<int> UpdateNewspapperAsync(int IDJournal, string titre, DateTime? dtParution)
         {
