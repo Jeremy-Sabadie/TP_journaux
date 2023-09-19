@@ -41,22 +41,22 @@ namespace articles2
             Task<int> result = DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
             return result.Result;
         }
-        public Task<int> DeleteArticle(int IDArticle)
+        public async Task<int> DeleteArticle(int IDArticle)
         {
             try
             {
                 string inJournalQuery = "select * from journal JOIN composition on composition.IDJournal = journal.IDJournal JOIN article ON composition.IDArticle= article.IDArticle WHERE article.IDArticle = @IDArticle;";
-                DBRequest.Open();
+                await DBRequest.OpenAsync();
 
                 string deleteQuery = "delete from article  where IDArticle = @IDArticle;";
                 Task<int> isIn = DBRequest.ExecuteAsync(inJournalQuery, new { IDArticle });
 
                 int deleteExecute = DBRequest.Execute(deleteQuery, new { IDArticle });
-                return isIn;
+                return isIn.Result;
 
 
             }
-            finally { DBRequest.Close(); }
+            finally { await DBRequest.CloseAsync(); }
         }
 
         #endregion
