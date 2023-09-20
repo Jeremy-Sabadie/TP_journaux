@@ -79,9 +79,9 @@ namespace articles2
 
         }
 
-        private void BTcreateArticle_Click(object sender, EventArgs e)
+        private async void BTcreateArticle_Click(object sender, EventArgs e)
         {
-            _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
+            await _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
             BTreadArticle.PerformClick();
         }
 
@@ -136,21 +136,21 @@ namespace articles2
             _DBCall.UpdateNewspapperAsync(current.IDJournal, current.Titre, current.DtParution);
         }
 
-        private void BTreadNewspappers_Click(object sender, EventArgs e)
+        private async void BTreadNewspappers_Click(object sender, EventArgs e)
         {
 
-            var news = _DBCall.GetAllNewspappersAsync();
+            var news = await _DBCall.GetAllNewspappersAsync();
             _lstNewspappers.Clear();
-            foreach (Newspapper n in news.Result)
+            foreach (Newspapper n in news)
             {
                 _lstNewspappers.Add(n);
 
             }
         }
 
-        private void BTcreateNewspapper_Click(object sender, EventArgs e)
+        private async void BTcreateNewspapper_Click(object sender, EventArgs e)
         {
-            _DBCall.InsertNewspapperAsync(TXTitreJournal.Text, DTParutionJournal.Value);
+            await _DBCall.InsertNewspapperAsync(TXTitreJournal.Text, DTParutionJournal.Value);
             BTreadNewspappers.PerformClick();
         }
 

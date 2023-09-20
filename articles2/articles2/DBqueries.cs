@@ -12,17 +12,14 @@ namespace articles2
         public async Task<IEnumerable<Article>> GetAllArticlesAsync()
         {
             string query = "select* from article;";
-            DBRequest.Close();
+
             try
             {
+
                 await DBRequest.OpenAsync();
-                lock (_verrou)
-                {
-                    // L'objet `verrou` is locked,its brace block is blocked.
-                    Thread.Sleep(1000);
-                }
-                // Task.Delay() Unlike the sleep() function, it allows the window to be moved, but still waits for a given delay.
-                await Task.Delay(5000);
+
+
+
 
                 var result = await DBRequest.QueryAsync<Article>(query);
                 return result;
@@ -37,7 +34,7 @@ namespace articles2
             try
             {
 
-                DBRequest.Open();
+                await DBRequest.OpenAsync();
                 var result = await DBRequest.ExecuteAsync(query, new { titre, corps, auteur });
                 return result;
             }
@@ -51,8 +48,8 @@ namespace articles2
             string query = "UPDATE article                SET Titre = @NewTitle, Corps=@NewContent, Auteur=@newAutor WHERE  IDArticle = @IDArticle";
 
             await DBRequest.OpenAsync();
-            Task<int> result = DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
-            return result.Result;
+            var result = await DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
+            return result;
         }
         public async Task<int> DeleteArticle(int IDArticle)
         {
@@ -62,10 +59,10 @@ namespace articles2
                 await DBRequest.OpenAsync();
 
                 string deleteQuery = "delete from article  where IDArticle = @IDArticle;";
-                Task<int> isIn = DBRequest.ExecuteAsync(inJournalQuery, new { IDArticle });
+                var isIn = await DBRequest.ExecuteAsync(inJournalQuery, new { IDArticle });
 
-                Task<int> deleteExecute = DBRequest.ExecuteAsync(deleteQuery, new { IDArticle });
-                return isIn.Result;
+                var deleteExecute = await DBRequest.ExecuteAsync(deleteQuery, new { IDArticle });
+                return isIn;
 
 
             }
