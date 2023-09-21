@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hJlWENFDz5MTYIT4WShhsjupWqfRZ5QhhI+mk1Y2eMbg8fmZMUx5/d8vw5nFeIlgJMJtUYouYEqbVHo0Uj7xHg==",
+  "dgSpecHash": "TZlDZ2QjRFK9GjLqv8kqohzdyrSd5ILrRAGBAQ/X4kOePud4dtUcH1E7ttaUIy9SUhGnwGI2EXXKKmqQu0qqJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cda07saba\\Desktop\\TP_journaux\\articles2\\articles2\\articles2.csproj",
+  "projectFilePath": "C:\\Users\\cda07saba\\Documents\\CDA07\\1-Technique\\8-desktop_accès_aux_données\\TP_journaux\\articles2\\articles2\\articles2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cda07saba\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\cda07saba\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",

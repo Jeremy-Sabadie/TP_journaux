@@ -5,6 +5,7 @@ namespace articles2
     public partial class Form1 : Form
     {
         DBqueries _DBCall = new();
+
         BindingList<Article> _lstArticles;
         BindingList<Newspapper> _lstNewspappers;
         BindingList<Composition> _lstCompos;
@@ -84,7 +85,7 @@ namespace articles2
             var idArticle = await _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
 
             BSArticle.Position = _lstArticles.IndexOf(_lstArticles.Where(u => u.IDArticle == idArticle).LastOrDefault());
-            Actualiser();
+            await ArticlesListRefreshAsync();
         }
 
         private void DGVcomposArticles_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -119,7 +120,7 @@ namespace articles2
         }
 
 
-        private void BTupdateArticle_Click(object sender, EventArgs e)
+        private async void BTupdateArticle_Click(object sender, EventArgs e)
         {
             Article current = BSArticle.Current as Article;
             if (current is not null)
@@ -128,7 +129,7 @@ namespace articles2
                 if (updated.Result > 0)
                 {
                     MessageBox.Show($"L'aticle n° {current.IDArticle} {current.Titre} de: {current.Auteur} à bien été mis à jour avec le titre: {TXTtitre.Text} et auteur: {TXTauteur.Text}.");
-
+                    await ArticlesListRefreshAsync();
                 }
             }
 
@@ -164,7 +165,7 @@ namespace articles2
         private async void BTcreateNewspapper_Click(object sender, EventArgs e)
         {
             await _DBCall.InsertNewspapperAsync(TXTitreJournal.Text, DTParutionJournal.Value);
-            BTreadNewspappers.PerformClick();
+            await ArticlesListRefreshAsync();
         }
 
         private void BTdeleteNewspapper_Click(object sender, EventArgs e)
@@ -186,6 +187,19 @@ namespace articles2
         private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        public async Task ArticlesListRefreshAsync()
+        {
+            // creation du current
+            Article current = BSArticle.Current as Article;
+            // Remplissage de la liste
+            _lstArticles.Clear();
+            var articles = await _DBCall.GetAllArticlesAsync();
+            foreach (Article a in articles)
+                _lstArticles.Add(a);
+            // On se repositionne sur le current
+            if (current is not null)
+                BSArticle.Position = _lstArticles.IndexOf(_lstArticles.Where(u => u.IDArticle == current.IDArticle).FirstOrDefault());
         }
     }
 }

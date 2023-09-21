@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cda07saba\\Desktop\\TP_journaux\\articles2\\articles2\\articles2.csproj": {}
+    "C:\\Users\\cda07saba\\Documents\\CDA07\\1-Technique\\8-desktop_accès_aux_données\\TP_journaux\\articles2\\articles2\\articles2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cda07saba\\Desktop\\TP_journaux\\articles2\\articles2\\articles2.csproj": {
+    "C:\\Users\\cda07saba\\Documents\\CDA07\\1-Technique\\8-desktop_accès_aux_données\\TP_journaux\\articles2\\articles2\\articles2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cda07saba\\Desktop\\TP_journaux\\articles2\\articles2\\articles2.csproj",
+        "projectUniqueName": "C:\\Users\\cda07saba\\Documents\\CDA07\\1-Technique\\8-desktop_accès_aux_données\\TP_journaux\\articles2\\articles2\\articles2.csproj",
         "projectName": "articles2",
-        "projectPath": "C:\\Users\\cda07saba\\Desktop\\TP_journaux\\articles2\\articles2\\articles2.csproj",
+        "projectPath": "C:\\Users\\cda07saba\\Documents\\CDA07\\1-Technique\\8-desktop_accès_aux_données\\TP_journaux\\articles2\\articles2\\articles2.csproj",
         "packagesPath": "C:\\Users\\cda07saba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cda07saba\\Desktop\\TP_journaux\\articles2\\articles2\\obj\\",
+        "outputPath": "C:\\Users\\cda07saba\\Documents\\CDA07\\1-Technique\\8-desktop_accès_aux_données\\TP_journaux\\articles2\\articles2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
