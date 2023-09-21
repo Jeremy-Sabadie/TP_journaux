@@ -64,7 +64,7 @@ namespace articles2
             finally { await DBRequest.CloseAsync(); }
         }
 
-        public async Task<int> DeleteArticle(int IDArticle)
+        public async Task<int> DeleteArticleAsync(int IDArticle)
         {
             try
             {

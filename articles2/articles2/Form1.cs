@@ -125,23 +125,25 @@ namespace articles2
             Article current = BSArticle.Current as Article;
             if (current is not null)
             {
-                Task<int> updated = _DBCall.UpdateArticleAsync(current.IDArticle, TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
-                if (updated.Result > 0)
+                var updated = await _DBCall.UpdateArticleAsync(current.IDArticle, TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
+                if (updated > 0)
                 {
                     MessageBox.Show($"L'aticle n° {current.IDArticle} {current.Titre} de: {current.Auteur} à bien été mis à jour avec le titre: {TXTtitre.Text} et auteur: {TXTauteur.Text}.");
                     await ArticlesListRefreshAsync();
+
                 }
+
             }
 
 
         }
 
-        private void BTdeleteArticle_Click(object sender, EventArgs e)
+        private async void BTdeleteArticle_Click(object sender, EventArgs e)
         {
             Article current = BSArticle.Current as Article;
             if (current is not null)
-                _DBCall.DeleteArticle(current.IDArticle);
-            BTreadArticle.PerformClick();
+                await _DBCall.DeleteArticleAsync(current.IDArticle);
+            await ArticlesListRefreshAsync();
         }
 
         private void BTupdateNewspapper_Click(object sender, EventArgs e)
