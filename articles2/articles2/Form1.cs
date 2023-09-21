@@ -81,8 +81,10 @@ namespace articles2
 
         private async void BTcreateArticle_Click(object sender, EventArgs e)
         {
-            await _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
-            BTreadArticle.PerformClick();
+            var idArticle = await _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
+
+            BSArticle.Position = _lstArticles.IndexOf(_lstArticles.Where(u => u.IDArticle == idArticle).LastOrDefault());
+            Actualiser();
         }
 
         private void DGVcomposArticles_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -105,6 +107,17 @@ namespace articles2
 
             }
         }
+        private async void Actualiser()
+        {
+            var articles = await _DBCall.GetAllArticlesAsync();
+            _lstArticles.Clear();
+            foreach (Article a in articles)
+            {
+                _lstArticles.Add(a);
+
+            }
+        }
+
 
         private void BTupdateArticle_Click(object sender, EventArgs e)
         {

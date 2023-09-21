@@ -30,27 +30,40 @@ namespace articles2
 
         public async Task<int> InsertArticleAsync(string titre, string corps, string auteur)
         {
-            string query = "Insert into article (Titre, Corps,auteur) values(@titre,@corps,@auteur)";
             try
             {
-
                 await DBRequest.OpenAsync();
-                var result = await DBRequest.ExecuteAsync(query, new { titre, corps, auteur });
+                var q = "INSERT INTO article (Titre,Corps,Auteur) VALUES (@titre, @corps, @auteur); SELECT LAST_INSERT_ID()";
+                var result = await DBRequest.QueryAsync<int>(q, new { titre, corps, auteur });
+                return result.Single();
+            }
+            finally { await DBRequest.CloseAsync(); }
+        }
+
+        public async Task<int> UpdateArticleAsync(int id, string titre, string corps, string auteur)
+        {
+            try
+            {
+                await DBRequest.OpenAsync();
+                var q = "UPDATE article SET Titre = @titre, Corps = @corps, Auteur = @auteur WHERE IDArticle = @id";
+                var result = await DBRequest.ExecuteAsync(q, new { id, titre, corps, auteur });
                 return result;
             }
-            finally
-            {
-                await DBRequest.CloseAsync();
-            }
+            finally { await DBRequest.CloseAsync(); }
         }
-        public async Task<int> UpdateArticleAsync(int IDArticle, string newTitle, string newContent, string newAutor)
-        {
-            string query = "UPDATE article                SET Titre = @NewTitle, Corps=@NewContent, Auteur=@newAutor WHERE  IDArticle = @IDArticle";
 
-            await DBRequest.OpenAsync();
-            var result = await DBRequest.ExecuteAsync(query, new { IDArticle, newTitle, newContent, newAutor });
-            return result;
+        public async Task<int> DeleteArticleIfNotCompositionAsync(int id)
+        {
+            try
+            {
+                await DBRequest.OpenAsync();
+                var q = "DELETE from Article WHERE IDArticle = @id AND NOT EXISTS (SELECT IDArticle FROM composition where IDArticle = @id)";
+                var result = await DBRequest.ExecuteAsync(q, new { id });
+                return result;
+            }
+            finally { await DBRequest.CloseAsync(); }
         }
+
         public async Task<int> DeleteArticle(int IDArticle)
         {
             try
