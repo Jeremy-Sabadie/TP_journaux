@@ -7,7 +7,7 @@ namespace articles2
     {
 
         object _verrou = new object();
-        MySqlConnection DBRequest = new("Server = lab005.2isa.org; Port=33005;Database=Edito;UID=root;PWD=1365lab005");
+        private readonly MySqlConnection DBRequest = new("Server = lab005.2isa.org; Port=33005;Database=Edito;UID=root;PWD=1365lab005");
         #region Article functions
         public async Task<IEnumerable<Article>> GetAllArticlesAsync()
         {
@@ -188,5 +188,5 @@ namespace articles2
         #endregion
 
     }
-    //"SELECT * FROM journal JOIN composition ON journal.IDJournal = composition.IDJournal JOIN article ON composition.IDArticle = article.IDArticle WHERE IDJournal = @IDJournal;"
+
 }

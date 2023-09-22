@@ -84,8 +84,10 @@ namespace articles2
         {
             var idArticle = await _DBCall.InsertArticleAsync(TXTtitre.Text, TXTcorps.Text, TXTauteur.Text);
 
-            BSArticle.Position = _lstArticles.IndexOf(_lstArticles.Where(u => u.IDArticle == idArticle).LastOrDefault());
             await ArticlesListRefreshAsync();
+
+            BSArticle.Position = _lstArticles.IndexOf(_lstArticles.FirstOrDefault(u => u.IDArticle == idArticle));
+
         }
 
         private void DGVcomposArticles_CellContentClick(object sender, DataGridViewCellEventArgs e)
